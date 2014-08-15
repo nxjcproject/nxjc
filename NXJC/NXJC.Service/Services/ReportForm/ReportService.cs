@@ -1,0 +1,147 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NXJC.Model.ReportForm;
+using NXJC.Repository.ReportForm;
+using NXJC.Service.Messages.ReportForm;
+using NXJC.Service.Mappers.ReportForm;
+using NXJC.Repository;
+using NXJC.Service.Views.ReportForm;
+using SqlServerDataAdapter;
+using SqlServerDataAdapter.Infrastruction;
+
+namespace NXJC.Service.Services.ReportForm
+{
+    public class ReportService : IReportFormService
+    {
+        TZRepository tzRepository = new TZRepository();
+        //FormulaYearRepository formulaYearRepository = new FormulaYearRepository();
+
+        /// <summary>
+        /// 跟据截止时间获得TZ数据
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public TZResponse GetTZ(TZRequest request)
+        {
+            Query query = new Query("TZ");
+            query.AddCriterion("Date", "startDate", request.StartTime, CriteriaOperator.MoreThanOrEqual);
+            query.AddCriterion("Date", "endDate", request.EndTime, CriteriaOperator.LessThanOrEqual);
+            if (request.ReportType == "年报")
+            {
+                query.AddCriterion("Date", "____", CriteriaOperator.Like);
+            }
+            else if (request.ReportType == "月报")
+            {
+                query.AddCriterion("Date", "____-__", CriteriaOperator.Like);
+            }
+            else if (request.ReportType == "日报")
+            {
+                query.AddCriterion("Date", "____-__-__", CriteriaOperator.Like);
+            }
+            else
+            {
+                throw new Exception("没有匹配的报表类型");
+            }
+            IEnumerable<TZ> tz = tzRepository.FindBy(query);
+            return new TZResponse
+            {
+                TZViews = tz.ConvertToViews(),
+                Success = true
+            };
+        }
+
+        ///// <summary>
+        ///// 根据key_id获得TZ数据
+        ///// </summary>
+        ///// <param name="request"></param>
+        ///// <returns></returns>
+        //public TZResponse GetTZByKeyId(TZRequest request)
+        //{
+        //    TZ value = tzRepository.FindBy(request.KeyId);
+
+        //    TZResponse result = new TZResponse
+        //    {
+        //        TZView = value.ConvertToView(),
+
+        //        Message = "",
+        //        Success = true
+        //    };
+        //    return result;
+        //}
+
+        ///// <summary>
+        ///// 获得报表名称的列表
+        ///// </summary>
+        ///// <returns></returns>
+        //public IDictionary<int, string> GetTableNameList()
+        //{
+        //    IEnumerable<TZ> tzs = tzRepository.FindAll();
+        //    IDictionary<int, string> tableNames = new Dictionary<int, string>();
+        //    int index = 0;
+        //    foreach (var item in tzs)
+        //    {
+        //        if (!tableNames.Values.Contains(item.名称))
+        //        {
+        //            tableNames.Add(index, item.名称);
+        //            index++;
+        //        }
+        //    }
+
+        //    return tableNames;
+        //}
+
+        ///// <summary>
+        ///// 获得FormulaYear数据
+        ///// </summary>
+        ///// <param name="request"></param>
+        ///// <returns></returns>
+        //public FormulaYearResponse GetFormulaYears(FormulaYearRequest request)
+        //{
+        //    FormulaYearResponse result = new FormulaYearResponse();
+
+        //    IList<FormulaYearView> items = new List<FormulaYearView>();
+
+        //    TZ tzValue = tzRepository.FindBy(request.keyId);
+        //    IEnumerable<FormulaYear> values = formulaYearRepository.GetBy(request.keyId);
+
+        //    result.FormulaYearViews = values.ConvertToViews();
+        //    result.TZView = tzValue.ConvertToView();
+
+        //    return result;
+        //}
+
+        ///// <summary>
+        ///// FormulaYear存储
+        ///// </summary>
+        ///// <param name="request"></param>
+        ///// <returns></returns>
+        //public FormulaYearSaveResponse FormulaYearSave(FormulaYearSaveRequest request)
+        //{
+        //    UnitOfWork unitOfWork = new UnitOfWork(); //实例化事务对象
+
+        //    FormulaYearSaveResponse response = new FormulaYearSaveResponse();
+
+        //    int newKeyId = KeyIdExtension.GetKeyId();
+
+        //    TZ tzValue = request.TZView.ConvertToTz();
+        //    tzValue.KEY_ID = newKeyId;
+        //    //tzRepository.Add(tzValue);
+        //    unitOfWork.RegisterNew(tzValue, tzRepository);
+
+        //    IEnumerable<FormulaYear> formulaYearValues = request.FormulaYears.ConvertToFormulaYears();
+        //    foreach (var item in formulaYearValues)
+        //    {
+        //        item.key_id = newKeyId;
+        //        //formulaYearRepository.Add(item);
+        //        unitOfWork.RegisterNew(item, formulaYearRepository);
+        //    }
+
+        //    unitOfWork.Commit();
+
+        //    return response;
+        //}
+    }
+}
