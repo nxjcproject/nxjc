@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NXJC.Model.Monitoring;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace NXJC.Service.Services.Monitoring
 {
     public interface IMonitoringService
     {
+        IEnumerable<DataItem> GetRealtimeDataItems(string viewName);
     }
 }

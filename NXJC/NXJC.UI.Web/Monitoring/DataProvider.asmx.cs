@@ -1,6 +1,7 @@
 ﻿using NXJC.Model.Monitoring;
 using NXJC.Model.Monitoring.Repository;
 using NXJC.Repository.Monitoring;
+using NXJC.Service.Services.Monitoring;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,9 @@ namespace NXJC.UI.Web.Monitoring
         [WebMethod]
         public SceneMonitor GetCurrentSceneMonitor(string productionLine, string sceneName)
         {
-            DataSetProvider dataProvider = new DataSetProvider(GetConnectionStringByProductionLineName(productionLine));
+            IMonitoringService service = new MonitoringService();
 
-            IEnumerable<DataItem> dataItems = dataProvider.GetRealtimeDatas(sceneName);
+            IEnumerable<DataItem> dataItems = service.GetRealtimeDataItems(sceneName);
             SceneMonitor result = new SceneMonitor
             {
                 Id = DateTime.Now,

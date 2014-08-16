@@ -1,7 +1,12 @@
-﻿using NXJC.Model.Monitoring;
+﻿using NXJC.Infrastructure.Configuration;
+using NXJC.Model.Monitoring;
 using NXJC.Model.Monitoring.Repository;
+using SqlServerDataAdapter;
+using SqlServerDataAdapter.Infrastruction;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +15,14 @@ namespace NXJC.Repository.Monitoring
 {
     public class RealtimeRepository : IRealtimeRepository
     {
+        ISqlServerDataFactory dataFactory;
+
+        public RealtimeRepository()
+        {
+            string connectionString = ApplicationSettingsFactory.GetApplicationSettings().Db_01_WastedHeatPowerConnectionString;
+            dataFactory = new SqlServerDataFactory(connectionString);
+        }
+
         public SceneMonitor GetLatest(string sceneName)
         {
             SceneMonitor sceneMonitor = new SceneMonitor();
@@ -30,6 +43,30 @@ namespace NXJC.Repository.Monitoring
             sceneMonitor.DataSet = dataSet;
 
             return sceneMonitor;
+        }
+
+        /// <summary>
+        /// 获得实时数据的table表
+        /// </summary>
+        /// <param name="dataPathInfor"></param>
+        /// <returns></returns>
+        public DataTable GetDataItemTable(IEnumerable<DataPathInformation> dataPathInfor)
+        {
+            ComplexQuery cmpquery = new ComplexQuery();
+            foreach (var item in dataPathInfor)
+            {
+                cmpquery.AddNeedField(item.TableName, item.FieldName, item.ViewId);
+            }
+            cmpquery.JoinCriterion = new JoinCriterion
+            {
+                JoinFieldName = "v_date",
+                JoinType = JoinType.FULL_JOIN
+            };
+            cmpquery.TopNumber = TopNumber.top1;
+            //cmpquery.OrderByClause = new OrderByClause("realtime_line_data.v_date", true);
+            DataTable table = dataFactory.Query(cmpquery);
+
+            return table;
         }
     }
 }

@@ -9,5 +9,6 @@ namespace NXJC.Infrastructure.Configuration
     {
         string ConnectionString { get; }
         string IndustryEnergy_SHConnectionString { get; }
+        string Db_01_WastedHeatPowerConnectionString { get; }
     }
 }
