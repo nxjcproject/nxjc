@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using JsonSerialize;
+using NXJC.Service.Views.ReportForm;
 
 namespace NXJC.UI.Web.Report
 {
@@ -30,7 +31,14 @@ namespace NXJC.UI.Web.Report
             };
             ReportService service = new ReportService();
             TZResponse response = service.GetTZ(request);
-            return JsonHelper.ObjectToJson(response.TZViews);
+            EasyUIJsonTemplate<TZView> jsonclass =new EasyUIJsonTemplate<TZView>
+            {
+                total = response.TZViews.Count(),
+                rows = response.TZViews
+            };
+            //string result = "{\"total\": 2, \"rows\":" + JsonHelper.ObjectToJson(response.TZViews) + "}";
+            string result = JsonHelper.ObjectToJson(jsonclass);
+            return result;
         }
     }
 }

@@ -107,18 +107,30 @@ namespace NXJC.Repository.ReportForm
 
             foreach (DataRow row in table.Rows)
             {
-                result.Add(new TZ
-                {
-                    KeyID = (Guid)row["KeyID"],
-                    ProductLineID = int.Parse(row["ProductLineID"].ToString().Trim()),
-                    ReportID = int.Parse(row["ReportID"].ToString().Trim()),
-                    Date = row["Date"].ToString().Trim(),
-                    CreationDate = (DateTime)row["CreationDate"],
-                    ModifierID = row["ModifierID"].ToString().Trim(),
-                    Version = (DateTime)row["Version"],
-                    ModifiedFlag = (bool)row["ModifiedFlag"],
-                    Remarks = row["Remarks"].ToString().Trim()
-                });
+                TZ tz = new TZ();
+
+                                    //tz.KeyID = (Guid)row["KeyID"];
+                    tz.ProductLineID = int.Parse(row["ProductLineID"].ToString().Trim());
+                    tz.ReportID = int.Parse(row["ReportID"].ToString().Trim());
+                    tz.Date = row["Date"].ToString().Trim();
+                    tz.CreationDate = (DateTime)row["CreationDate"];
+                    tz.ModifierID = row["ModifierID"].ToString().Trim();
+                    tz.Version = (DateTime)row["Version"];
+                    tz.ModifiedFlag = (bool)row["ModifiedFlag"];
+                    tz.Remarks = row["Remarks"].ToString().Trim();
+                //result.Add(new TZ
+                //{
+                //    KeyID = (Guid)row["KeyID"],
+                //    ProductLineID = int.Parse(row["ProductLineID"].ToString().Trim()),
+                //    ReportID = int.Parse(row["ReportID"].ToString().Trim()),
+                //    Date = row["Date"].ToString().Trim(),
+                //    CreationDate = (DateTime)row["CreationDate"],
+                //    ModifierID = row["ModifierID"].ToString().Trim(),
+                //    Version = (DateTime)row["Version"],
+                //    ModifiedFlag = (bool)row["ModifiedFlag"],
+                //    Remarks = row["Remarks"].ToString().Trim()
+                //});
+                    result.Add(tz);
             }
             return result;
         }

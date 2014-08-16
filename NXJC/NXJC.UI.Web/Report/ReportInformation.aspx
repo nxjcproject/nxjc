@@ -37,8 +37,44 @@
             var data = { 'reportType': reportType, 'reportName': reportName, 'startTime': startTime, 'endTime': endTime }
             return JSON.stringify(data);
         }
-        function LoadDataToGrid(data) {
-            $('#tzGrid').datagrid('loadData', data);
+        function LoadDataToGrid(myData) {
+            //$('#tzGrid').datagrid('loadData', myData);
+            $('#tzGrid').datagrid({
+                data: myData,
+                dataType: "json",
+                columns: [[{
+                    width: '60',
+                    title: '生产线',
+                    field:'ProductLineName'
+                }, {
+                    width: '70',
+                    title: '报表名称',
+                    field: 'ReportName'
+                }, {
+                    width: '60',
+                    title: '报表日期',
+                    field: 'Date'
+                }, {
+                    width: '60',
+                    title: '生成日期',
+                    field: 'CreationDate',
+                    formatter: function (value, row, index) {
+                        return getDatetimeFromJson(value);
+                    }
+                }, {
+                    width: '60',
+                    title: '修改人',
+                    field: 'ModifierName'
+                }, {
+                    width: '30',
+                    title: '修改标志',
+                    field: 'ModifiedFlag',
+                }, {
+                    width: '60',
+                    title: '备注',
+                    field: 'Remarks'
+                }]]
+            });
         }
         function GetDataFromServer() {
             varType = "POST";
@@ -61,18 +97,22 @@
             });
         }
         function serviceSuccessful(resultObject) {
-            if (pollforupdates == true) {
-                LoadDataToGrid(resultObject);
-            }
+            LoadDataToGrid(jQuery.parseJSON(resultObject.d));
         }
         function serviceFailed(result) {
+        }
+        function getDatetimeFromJson(jsonDate) {
+            // 转换JSON日期至字符串
+            jsonDate = jsonDate.split('(')[1].split(')')[0];
+            var rDate = new Date(parseInt(jsonDate));
+            return rDate.toLocaleDateString();
         }
     </script>
 </head>
 <body>
     <div id="tb" style="padding:5px;height:auto">
 		<div>
-            类型: <select id="reportType" class="easyui-combobox" name="state" style="width:100px">
+            类型: <select id="reportType" class="easyui-combobox" name="state" style="width:55px">
                         <option value="年报">年报</option>
                         <option value="月报">月报</option>
                         <option value="日报">日报</option>
@@ -80,24 +120,14 @@
             报表名称: <input id="reportName" class="easyui-combobox" style="width:100px"
 					url="data/combobox_data.json"
 					valueField="Id" textField="Name">
-			起始日期: <input id="startTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:80px">
-			至: <input id="endTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:80px">
+			起始日期: <input id="startTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:90px">
+			至: <input id="endTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:90px">
 			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="GetDataFromServer()">Search</a>
 		</div>
 	</div>
-    <table id="tzGrid" class="easyui-datagrid" style="width:600px;height:250px"
+    <table id="tzGrid" class="easyui-datagrid" style="width:650px;height:250px"
 			title="DataGrid - Complex Toolbar" toolbar="#tb"
 			singleSelect="true" fitColumns="true">
-		<thead>
-			<tr>
-				<th field="itemid" width="60">Item ID</th>
-				<th field="productid" width="80">Product ID</th>
-				<th field="listprice" align="right" width="70">List Price</th>
-				<th field="unitcost" align="right" width="70">Unit Cost</th>
-				<th field="attr1" width="200">Address</th>
-				<th field="status" width="50">Status</th>
-			</tr>
-		</thead>
 	</table>
 </body>
 </html>

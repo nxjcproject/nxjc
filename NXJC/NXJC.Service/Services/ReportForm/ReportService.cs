@@ -27,18 +27,28 @@ namespace NXJC.Service.Services.ReportForm
         public TZResponse GetTZ(TZRequest request)
         {
             Query query = new Query("TZ");
-            query.AddCriterion("Date", "startDate", request.StartTime, CriteriaOperator.MoreThanOrEqual);
-            query.AddCriterion("Date", "endDate", request.EndTime, CriteriaOperator.LessThanOrEqual);
             if (request.ReportType == "年报")
             {
+                string startTime = request.StartTime.Split('-')[0];
+                string endTime = request.EndTime.Split('-')[0];
+                query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
+                query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____", CriteriaOperator.Like);
             }
             else if (request.ReportType == "月报")
             {
+                string startTime = request.StartTime.Split('-')[0] + request.StartTime.Split('-')[1];
+                string endTime = request.EndTime.Split('-')[0] + request.EndTime.Split('-')[1];
+                query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
+                query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__", CriteriaOperator.Like);
             }
             else if (request.ReportType == "日报")
             {
+                string startTime = request.StartTime.Split('-')[0] + request.StartTime.Split('-')[1] + request.StartTime.Split('-')[2];
+                string endTime = request.EndTime.Split('-')[0] + request.EndTime.Split('-')[1] + request.EndTime.Split('-')[2];
+                query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
+                query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__-__", CriteriaOperator.Like);
             }
             else
