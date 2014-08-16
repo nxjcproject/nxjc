@@ -36,9 +36,6 @@
     <Reference Include="AutoMapper">
       <HintPath>..\..\..\..\..\PatternsLearning\ASPPatternsc11\Agathas.Storefront\Lib\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="SqlServerDataAdapter">
-      <HintPath>..\..\..\..\类库\DataAdapter1.0\DataAdapter\SqlServerDataAdapter\bin\Debug\SqlServerDataAdapter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
