@@ -9,7 +9,17 @@ namespace NXJC.Model.Monitoring.Repository
 {
     public interface IRealtimeRepository
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sceneName"></param>
+        /// <returns></returns>
         SceneMonitor GetLatest(string sceneName);
+        /// <summary>
+        /// 获得实时数据的table表
+        /// </summary>
+        /// <param name="dataPathInfor"></param>
+        /// <returns></returns>
         DataTable GetDataItemTable(IEnumerable<DataPathInformation> dataPathInfor);
     }
 }

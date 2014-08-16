@@ -9,6 +9,11 @@ namespace NXJC.Service.Services.Monitoring
 {
     public interface IMonitoringService
     {
+        /// <summary>
+        /// 获得视图实时数据
+        /// </summary>
+        /// <param name="viewName"></param>
+        /// <returns></returns>
         IEnumerable<DataItem> GetRealtimeDataItems(string viewName);
     }
 }

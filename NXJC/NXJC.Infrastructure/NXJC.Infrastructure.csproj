@@ -33,9 +33,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SqlServerDataAdapter">
-      <HintPath>..\..\..\..\类库\DataAdapter1.0\DataAdapter\SqlServerDataAdapter\bin\Debug\SqlServerDataAdapter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
