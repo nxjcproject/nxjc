@@ -7,6 +7,7 @@ using SqlServerDataAdapter.Infrastruction;
 using System.Data.SqlClient;
 using System.Data;
 using SqlServerDataAdapter.Translators;
+using AutoMapper;
 
 namespace SqlServerDataAdapter
 {
@@ -153,6 +154,68 @@ namespace SqlServerDataAdapter
                     //conn.Open();
                     SqlDataAdapter ad = new SqlDataAdapter(cmd);
                     ad.Fill(result);
+                }
+                catch
+                {
+                    throw new Exception("Error");
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 一般检索数据库数据，返回泛型集合
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public IEnumerable<T> Query<T>(Query query)
+        {
+            IList<T> result = new List<T>();
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+
+                SqlCommand cmd = conn.CreateCommand();
+                QueryTranslator.TranslateIntoSelect(query, cmd);
+
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(Mapper.DynamicMap<T>(reader));
+                    }
+                }
+                catch
+                {
+                    throw new Exception("Error");
+                }
+            }
+            return result;
+        }
+        /// <summary>
+        /// 复杂检索数据库数据，返回泛型集合
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="complexQuery"></param>
+        /// <returns></returns>
+        public IEnumerable<T> Query<T>(ComplexQuery complexQuery)
+        {
+            IList<T> result = new List<T>();
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                SqlCommand cmd = conn.CreateCommand();
+                ComplexQueryTranslator.TranslateIntoComplexQuery(complexQuery, cmd);
+
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(Mapper.DynamicMap<T>(reader));
+                    }
                 }
                 catch
                 {

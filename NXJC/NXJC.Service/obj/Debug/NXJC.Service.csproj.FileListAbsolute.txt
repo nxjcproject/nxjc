@@ -62,3 +62,4 @@ E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Repository.pdb
 E:\Git\nxjc\NXJC\NXJC.Service\obj\Debug\NXJC.Service.csprojResolveAssemblyReference.cache
 E:\Git\nxjc\NXJC\NXJC.Service\obj\Debug\NXJC.Service.dll
 E:\Git\nxjc\NXJC\NXJC.Service\obj\Debug\NXJC.Service.pdb
+E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\AutoMapper.dll

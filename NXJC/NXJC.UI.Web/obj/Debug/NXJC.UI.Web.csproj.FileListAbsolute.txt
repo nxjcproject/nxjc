@@ -322,3 +322,4 @@ E:\Git\nxjc\NXJC\NXJC.UI.Web\bin\zh-Hans\System.Web.Providers.resources.dll
 E:\Git\nxjc\NXJC\NXJC.UI.Web\bin\zh-Hans\Microsoft.AspNet.Membership.OpenAuth.resources.dll
 E:\Git\nxjc\NXJC\NXJC.UI.Web\obj\Debug\NXJC.UI.Web.dll
 E:\Git\nxjc\NXJC\NXJC.UI.Web\obj\Debug\NXJC.UI.Web.pdb
+E:\Git\nxjc\NXJC\NXJC.UI.Web\bin\AutoMapper.dll
