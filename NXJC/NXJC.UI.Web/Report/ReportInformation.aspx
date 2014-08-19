@@ -41,6 +41,7 @@
             //$('#tzGrid').datagrid('loadData', myData);
             $('#tzGrid').datagrid({
                 data: myData,
+                idField:"KeyID",
                 dataType: "json",
                 columns: [[{
                     width: '60',
@@ -66,13 +67,20 @@
                     title: '修改人',
                     field: 'ModifierName'
                 }, {
-                    width: '30',
+                    width: '60',
                     title: '修改标志',
                     field: 'ModifiedFlag',
                 }, {
                     width: '60',
                     title: '备注',
                     field: 'Remarks'
+                }, {
+                    width: '60',
+                    title: '编辑',
+                    field:'action',
+                    formatter: function (value, row, index) {
+                        return '<a href="FormulaYearInformation.aspx?id=' + row['KeyID']+'" onclick="saverow(this)">详细</a>'
+                    }
                 }]]
             });
         }
@@ -118,8 +126,8 @@
                         <option value="日报">日报</option>
                   </select>
             报表名称: <input id="reportName" class="easyui-combobox" style="width:100px"
-					url="data/combobox_data.json"
-					valueField="Id" textField="Name">
+					url="ReportInformationService.asmx/GetReportNames"
+					valueField="ID" textField="Name">
 			起始日期: <input id="startTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:90px">
 			至: <input id="endTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:90px">
 			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="GetDataFromServer()">Search</a>

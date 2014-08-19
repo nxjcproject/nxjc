@@ -11,13 +11,15 @@ using NXJC.Repository;
 using NXJC.Service.Views.ReportForm;
 using SqlServerDataAdapter;
 using SqlServerDataAdapter.Infrastruction;
+using NXJC.Model.ReportForm.Repository;
 
 namespace NXJC.Service.Services.ReportForm
 {
     public class ReportService : IReportFormService
     {
-        TZRepository tzRepository = new TZRepository();
-        //FormulaYearRepository formulaYearRepository = new FormulaYearRepository();
+        ITZRepository tzRepository = new TZRepository();
+        IReportRepository reportRepository = new ReportRepository();
+        FormulaYearRepository formulaYearRepository = new FormulaYearRepository();
 
         /// <summary>
         /// 跟据截止时间获得TZ数据
@@ -31,6 +33,7 @@ namespace NXJC.Service.Services.ReportForm
             {
                 string startTime = request.StartTime.Split('-')[0];
                 string endTime = request.EndTime.Split('-')[0];
+                query.AddCriterion("ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____", CriteriaOperator.Like);
@@ -39,6 +42,7 @@ namespace NXJC.Service.Services.ReportForm
             {
                 string startTime = request.StartTime.Split('-')[0] + request.StartTime.Split('-')[1];
                 string endTime = request.EndTime.Split('-')[0] + request.EndTime.Split('-')[1];
+                query.AddCriterion("ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__", CriteriaOperator.Like);
@@ -47,6 +51,7 @@ namespace NXJC.Service.Services.ReportForm
             {
                 string startTime = request.StartTime.Split('-')[0] + request.StartTime.Split('-')[1] + request.StartTime.Split('-')[2];
                 string endTime = request.EndTime.Split('-')[0] + request.EndTime.Split('-')[1] + request.EndTime.Split('-')[2];
+                query.AddCriterion("ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__-__", CriteriaOperator.Like);
@@ -61,6 +66,38 @@ namespace NXJC.Service.Services.ReportForm
                 TZViews = tz.ConvertToViews(),
                 Success = true
             };
+        }
+
+        public IEnumerable<ReportNameView> GetReportNameViews()
+        {
+            IList<ReportNameView> result = new List<ReportNameView>();
+            Query query = new Query("Report");
+            IEnumerable<Report> reports = reportRepository.FindBy(query);
+
+            foreach (var item in reports)
+            {
+                result.Add(new ReportNameView
+                {
+                    ID = item.Id,
+                    Name = item.Name
+                });
+            }
+            return result;
+        }
+        /// <summary>
+        /// 通过KeyID获得FormulaYear数据
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public FormulaYearResponse GetFormulaYearByKeyID(FormulaYearRequest request)
+        {
+            FormulaYearResponse response = new FormulaYearResponse();
+
+            IEnumerable<FormulaYear> results = formulaYearRepository.GetBy(request.KeyID);
+
+            response.FormulaYearViews = results.ConvertToViews();
+
+            return response;
         }
 
 

@@ -73,18 +73,16 @@ namespace NXJC.Repository.ReportForm
 
             if (table.Rows.Count > 0)
             {
-                TZ result = new TZ
-                {
-                    KeyID = (Guid)table.Rows[0]["KeyID"],
-                    ProductLineID = int.Parse(table.Rows[0]["ProductLineID"].ToString().Trim()),
-                    ReportID = int.Parse(table.Rows[0]["ReportID"].ToString().Trim()),
-                    Date = table.Rows[0]["Date"].ToString().Trim(),
-                    CreationDate = (DateTime)table.Rows[0]["CreationDate"],
-                    ModifierID = table.Rows[0]["ModifierID"].ToString().Trim(),
-                    Version = (DateTime)table.Rows[0]["Version"],
-                    ModifiedFlag = (bool)table.Rows[0]["ModifiedFlag"],
-                    Remarks = table.Rows[0]["Remarks"].ToString().Trim()
-                };
+                TZ result = new TZ();
+                result.KeyID = (Guid)table.Rows[0]["KeyID"];
+                result.ProductLineID = int.Parse(table.Rows[0]["ProductLineID"].ToString().Trim());
+                result.ReportID = int.Parse(table.Rows[0]["ReportID"].ToString().Trim());
+                result.Date = table.Rows[0]["Date"].ToString().Trim();
+                result.CreationDate = (DateTime)table.Rows[0]["CreationDate"];
+                result.ModifierID = table.Rows[0]["ModifierID"].ToString().Trim();
+                result.Version = (DateTime)table.Rows[0]["Version"];
+                result.ModifiedFlag = (bool)table.Rows[0]["ModifiedFlag"];
+                result.Remarks = table.Rows[0]["Remarks"].ToString().Trim();
                 return result;
             }
             else
@@ -109,7 +107,7 @@ namespace NXJC.Repository.ReportForm
             {
                 TZ tz = new TZ();
 
-                                    //tz.KeyID = (Guid)row["KeyID"];
+                    tz.KeyID = (Guid)row["KeyID"];
                     tz.ProductLineID = int.Parse(row["ProductLineID"].ToString().Trim());
                     tz.ReportID = int.Parse(row["ReportID"].ToString().Trim());
                     tz.Date = row["Date"].ToString().Trim();

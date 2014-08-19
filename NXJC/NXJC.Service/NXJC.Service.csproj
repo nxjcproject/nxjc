@@ -59,6 +59,7 @@
     <Compile Include="Messages\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ReportForm\FormulaYearView.cs" />
+    <Compile Include="Views\ReportForm\ReportNameView.cs" />
     <Compile Include="Views\ReportForm\TZView.cs" />
   </ItemGroup>
   <ItemGroup>

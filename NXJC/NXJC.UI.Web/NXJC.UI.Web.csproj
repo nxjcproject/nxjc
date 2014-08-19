@@ -158,6 +158,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Monitoring.css" />
+    <Content Include="Report\FormulaYearInformation.aspx" />
+    <Content Include="Report\FormulaYearInformationService.asmx" />
+    <Content Include="Report\ReportInformationService.asmx" />
     <Content Include="Scripts\easyui\easyloader.js" />
     <Content Include="Scripts\easyui\jquery.easyui.min.js" />
     <Content Include="Scripts\easyui\jquery.min.js" />
@@ -578,12 +581,27 @@
       <DependentUpon>Views.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\FormulaYearInformation.aspx.cs">
+      <DependentUpon>FormulaYearInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\FormulaYearInformation.aspx.designer.cs">
+      <DependentUpon>FormulaYearInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\FormulaYearInformationService.asmx.cs">
+      <DependentUpon>FormulaYearInformationService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\ReportInformation.aspx.cs">
       <DependentUpon>ReportInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Report\ReportInformation.aspx.designer.cs">
       <DependentUpon>ReportInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportInformationService.asmx.cs">
+      <DependentUpon>ReportInformationService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

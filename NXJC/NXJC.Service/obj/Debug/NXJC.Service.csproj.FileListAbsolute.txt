@@ -51,15 +51,3 @@ E:\NXJC\temp\NXJC\NXJC.Service\bin\Debug\NXJC.Infrastructure.pdb
 E:\NXJC\temp\NXJC\NXJC.Service\bin\Debug\NXJC.Model.pdb
 E:\NXJC\temp\NXJC\NXJC.Service\bin\Debug\NXJC.Repository.pdb
 E:\NXJC\temp\NXJC\NXJC.Service\bin\Debug\SqlServerDataAdapter.pdb
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Service.dll
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Service.pdb
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Infrastructure.dll
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Model.dll
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Repository.dll
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Infrastructure.pdb
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Model.pdb
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\NXJC.Repository.pdb
-E:\Git\nxjc\NXJC\NXJC.Service\obj\Debug\NXJC.Service.csprojResolveAssemblyReference.cache
-E:\Git\nxjc\NXJC\NXJC.Service\obj\Debug\NXJC.Service.dll
-E:\Git\nxjc\NXJC\NXJC.Service\obj\Debug\NXJC.Service.pdb
-E:\Git\nxjc\NXJC\NXJC.Service\bin\Debug\AutoMapper.dll

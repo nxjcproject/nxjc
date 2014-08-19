@@ -9,138 +9,96 @@ using System.Data.SqlClient;
 using NXJC.Infrastructure.Configuration;
 using AutoMapper;
 using NXJC.Model.ReportForm.Repository;
+using SqlServerDataAdapter;
+using System.Data;
 
 namespace NXJC.Repository.ReportForm
 {
-    //public class FormulaYearRepository : IFormulaYearRepository, IUnitOfWorkRepository
-    //{
-        //private readonly string connectionString = ApplicationSettingsFactory.GetApplicationSettings().ConnectionString;
+    public class FormulaYearRepository : IFormulaYearRepository, IUnitOfWorkRepository
+    {
+        private readonly string connectionString;
+        private ISqlServerDataFactory dataFactory;
 
-        ///**********************************************************/
-        //public void PersistCreationOf(IAggregateRoot entity)
-        //{
-        //    this.Add((FormulaYear)entity);
-        //}
+        public FormulaYearRepository()
+        {
+            connectionString = ApplicationSettingsFactory.GetApplicationSettings().ConnectionString;
+            dataFactory = new SqlServerDataFactory(connectionString);
+        }
 
-        //public void PersistUpdateOf(IAggregateRoot entity)
-        //{
-        //    this.Save((FormulaYear)entity);
-        //}
+        /**********************************************************/
+        public void PersistCreationOf(IAggregateRoot entity)
+        {
+            this.Add((FormulaYear)entity);
+        }
 
-        //public void PersistDeletionOf(IAggregateRoot entity)
-        //{
-        //    this.Remove((FormulaYear)entity);
-        //}
-        ///***********************************************************/
+        public void PersistUpdateOf(IAggregateRoot entity)
+        {
+            this.Save((FormulaYear)entity);
+        }
 
-        //public void Save(FormulaYear entity)
-        //{
-        //    UpdateObject<FormulaYear> updateObject = new UpdateObject<FormulaYear>("table_formula_year", entity);
-        //    updateObject.AddCriterion("key_id", "KEY_ID", entity.key_id, CriteriaOperator.Equal);
-        //    updateObject.AddExcludeProperty("key_id");
+        public void PersistDeletionOf(IAggregateRoot entity)
+        {
+            this.Remove((FormulaYear)entity);
+        }
+        /***********************************************************/
 
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = conn.CreateCommand();
-        //        SaveTranslator.TranslateIntoUpdate<FormulaYear>(updateObject, cmd);
+        public void Save(FormulaYear entity)
+        {
+        }
 
-        //        conn.Open();
+        public void Add(FormulaYear entity)
+        {
+        }
 
-        //        try
-        //        {
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //        catch
-        //        {
-        //            throw new Exception("更新数据库TZ表失败");
-        //        }
-        //    }
-        //}
+        public void Remove(FormulaYear entity)
+        {
+        }
 
-        //public void Add(FormulaYear entity)
-        //{
-        //    InsertObject<FormulaYear> insertObject = new InsertObject<FormulaYear>("table_formula_year", entity);
+        public FormulaYear FindBy(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = conn.CreateCommand();
-        //        SaveTranslator.TranslateIntoInsert<FormulaYear>(insertObject, cmd);
+        /// <summary>
+        /// 根据Key_id获得数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IEnumerable<FormulaYear> GetBy(Guid id)
+        {
+            IList<FormulaYear> result = new List<FormulaYear>();
+            Query query = new Query("FormulaYear");
+            query.AddCriterion("KeyID", id, SqlServerDataAdapter.Infrastruction.CriteriaOperator.Equal);
+            DataTable dt = dataFactory.Query(query);
+            foreach (DataRow row in dt.Rows)
+            {
+                FormulaYear item = new FormulaYear();
+                item.Energy = int.Parse(row["Energy"].ToString().Trim());
+                item.KeyID = (Guid)row["KeyID"];
+                item.number = int.Parse(row["number"].ToString().Trim());
+                result.Add(item);
+            }
+            return result;
+        }
 
-        //        conn.Open();
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //}
+        public IEnumerable<FormulaYear> FindAll()
+        {
+            throw new NotImplementedException();
+        }
 
-        //public void Remove(FormulaYear entity)
-        //{
-        //    DeleteObject deleteObject = new DeleteObject("table_formula_year");
-        //    deleteObject.AddCriterions("key_id", "keyId", entity.key_id, CriteriaOperator.Equal);
+        public IEnumerable<FormulaYear> FindBy(Query query)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = conn.CreateCommand();
-        //        DeleteTranslator.TranslateIntoDelete(deleteObject, cmd);
+        public IEnumerable<FormulaYear> FindBy(Query query, int index, int count)
+        {
+            throw new NotImplementedException();
+        }
 
-        //        conn.Open();
-
-        //        try
-        //        {
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //        catch
-        //        {
-        //            throw new Exception("在数据库TZ表中删除记录失败");
-        //        }
-        //    }
-        //}
-
-        //public FormulaYear FindBy(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        ///// <summary>
-        ///// 根据Key_id获得数据
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns></returns>
-        //public IEnumerable<FormulaYear> GetBy(int id)
-        //{
-        //    IList<FormulaYear> results = new List<FormulaYear>();
-
-        //    SelectObject selectObject = new SelectObject("table_formula_year");
-        //    selectObject.AddCriterion("key_id", "key_id", id, CriteriaOperator.Equal);
-
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = conn.CreateCommand();
-        //        SelectTranslator.TranslateIntoSelect(selectObject, cmd);
-        //        conn.Open();
-
-        //        SqlDataReader reader = cmd.ExecuteReader();
-        //        while (reader.Read())
-        //        {
-        //            FormulaYear item = Mapper.DynamicMap<FormulaYear>(reader);
-        //            results.Add(item);
-        //        }
-        //    }
-
-        //    return results;
-        //}
-
-        //public IEnumerable<FormulaYear> FindAll()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public IEnumerable<FormulaYear> FindBy(AutoSQL.Querying.Query query)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public IEnumerable<FormulaYear> FindBy(AutoSQL.Querying.Query query, int index, int count)
-        //{
-        //    throw new NotImplementedException();
-        //}
-    //}
+        public IEnumerable<FormulaYear> GetBy(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

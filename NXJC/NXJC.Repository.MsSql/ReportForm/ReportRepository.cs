@@ -9,6 +9,8 @@ using SqlServerDataAdapter;
 using SqlServerDataAdapter.Infrastruction;
 using NXJC.Infrastructure.Configuration;
 using System.Data;
+using System.Reflection;
+using AutoMapper;
 
 namespace NXJC.Repository.ReportForm
 {
@@ -85,16 +87,24 @@ namespace NXJC.Repository.ReportForm
         public IEnumerable<Report> FindBy(Query query)
         {
             IList<Report> results = new List<Report>();
+
+            //return dataFactory.Query<Report>(query);
             DataTable table = dataFactory.Query(query);
             foreach (DataRow row in table.Rows)
             {
-                results.Add(new Report
-                {
-                    Id = int.Parse(row["ID"].ToString().Trim()),
-                    Name = row["Name"].ToString().Trim(),
-                    Type = (NXJC.Model.ReportForm.ReportType)row["Type"],
-                    Remarks = row["Remarks"].ToString().Trim()
-                });
+                Report item = new Report();
+                item.ID = int.Parse(row["ID"].ToString().Trim());
+                item.Name = row["Name"].ToString().Trim();
+                item.Type = (NXJC.Model.ReportForm.ReportType)(row["Type"]);
+                item.Remarks = row["Remarks"].ToString().Trim();
+                //results.Add(new Report
+                //{
+                //    Id = int.Parse(row["ID"].ToString().Trim()),
+                //    Name = row["Name"].ToString().Trim(),
+                //    Type = (NXJC.Model.ReportForm.ReportType)row["Type"],
+                //    Remarks = row["Remarks"].ToString().Trim()
+                //});
+                results.Add(item);
             }
             return results;
         }
@@ -112,6 +122,12 @@ namespace NXJC.Repository.ReportForm
             DataTable table = dataFactory.Query(cmquery);
 
             return table.Rows[0][0].ToString().Trim();
+        }
+
+
+        public IEnumerable<Report> GetByComplexQuery(ComplexQuery complexQuery)
+        {
+            throw new NotImplementedException();
         }
     }
 }

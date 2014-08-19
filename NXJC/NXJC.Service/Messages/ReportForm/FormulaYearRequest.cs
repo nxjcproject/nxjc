@@ -8,6 +8,6 @@ namespace NXJC.Service.Messages.ReportForm
 {
     public class FormulaYearRequest
     {
-        public int keyId { get; set; }
+        public Guid KeyID { get; set; }
     }
 }

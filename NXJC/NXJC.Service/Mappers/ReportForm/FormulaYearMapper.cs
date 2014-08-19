@@ -14,14 +14,9 @@ namespace NXJC.Service.Mappers.ReportForm
         {
             return new FormulaYearView
             {
-                key_id = item.key_id,
+                KeyID = item.KeyID,
                 number = item.number,
-                层次码 = item.层次码,
-                峰期电耗 = item.峰期电耗,
-                工序名称 = item.工序名称,
-                谷期电耗 = item.谷期电耗,
-                合计电耗 = item.合计电耗,
-                平期电耗 = item.平期电耗
+                Energy = item.Energy
             };
         }
 
@@ -41,14 +36,9 @@ namespace NXJC.Service.Mappers.ReportForm
         {
             return new FormulaYear
             {
-                key_id = item.key_id,
+                KeyID = item.KeyID,
                 number = item.number,
-                层次码 = item.层次码,
-                峰期电耗 = item.峰期电耗,
-                工序名称 = item.工序名称,
-                谷期电耗 = item.谷期电耗,
-                合计电耗 = item.合计电耗,
-                平期电耗 = item.平期电耗
+                Energy = item.Energy
             };
         }
 

@@ -20,12 +20,12 @@ namespace NXJC.UI.Web.Report
         }
 
         [WebMethod]
-        public static string GetTZInformation(string reportType, string startTime, string endTime)
+        public static string GetTZInformation(string reportType,string reportName, string startTime, string endTime)
         {
             TZRequest request = new TZRequest
             {
                 EndTime = endTime,
-                //ReportName = reportName,
+                ReportName = reportName,
                 ReportType = reportType,
                 StartTime = startTime
             };
