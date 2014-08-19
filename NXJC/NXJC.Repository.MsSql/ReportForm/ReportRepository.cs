@@ -21,7 +21,7 @@ namespace NXJC.Repository.ReportForm
 
         public ReportRepository()
         {
-            connectionString = ApplicationSettingsFactory.GetApplicationSettings().ConnectionString;
+            connectionString = ConnectionStringFactory.GetNXJCConnectionString();
             dataFactory = new SqlServerDataFactory(connectionString);
         }
 

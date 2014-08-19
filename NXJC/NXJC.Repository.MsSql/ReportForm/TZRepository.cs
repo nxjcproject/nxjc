@@ -22,7 +22,7 @@ namespace NXJC.Repository.ReportForm
 
         public TZRepository()
         {
-            connectionString = ApplicationSettingsFactory.GetApplicationSettings().ConnectionString;
+            connectionString = ConnectionStringFactory.GetNXJCConnectionString();
             dataFactory = new SqlServerDataFactory(connectionString);
         }
 

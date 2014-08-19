@@ -7,7 +7,8 @@ namespace NXJC.Infrastructure.Configuration
 {
     public interface IApplicationSettings
     {
-        string ConnectionString { get; }
+        string NXJCConnectionString { get; }
+        string ProcessDataConnectionString { get; }
         string IndustryEnergy_SHConnectionString { get; }
         string Db_01_WastedHeatPowerConnectionString { get; }
     }

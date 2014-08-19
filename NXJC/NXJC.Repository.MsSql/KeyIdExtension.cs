@@ -11,48 +11,48 @@ namespace NXJC.Repository
     /// <summary>
     /// 获取KeyId值的对象
     /// </summary>
-    public class KeyIdExtension
-    {
-        private static readonly string connectionString = ApplicationSettingsFactory.GetApplicationSettings().ConnectionString;
+    //public class KeyIdExtension
+    //{
+    //    private static readonly string connectionString = ApplicationSettingsFactory.GetApplicationSettings().ConnectionString;
 
-        public static int GetKeyIdBy(SqlCommand command)
-        {
-            int result = 0;
+    //    public static int GetKeyIdBy(SqlCommand command)
+    //    {
+    //        int result = 0;
 
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "sp_key_id";
+    //        command.CommandType = CommandType.StoredProcedure;
+    //        command.CommandText = "sp_key_id";
 
-            SqlParameter parameter = new SqlParameter("@key", SqlDbType.Int);
-            parameter.Direction = ParameterDirection.Output;
-            command.Parameters.Add(parameter);
+    //        SqlParameter parameter = new SqlParameter("@key", SqlDbType.Int);
+    //        parameter.Direction = ParameterDirection.Output;
+    //        command.Parameters.Add(parameter);
 
-            command.ExecuteNonQuery();
-            int.TryParse(parameter.Value.ToString(), out result);
-            command.Parameters.Clear();
+    //        command.ExecuteNonQuery();
+    //        int.TryParse(parameter.Value.ToString(), out result);
+    //        command.Parameters.Clear();
 
-            return result;
-        }
+    //        return result;
+    //    }
 
-        public static int GetKeyId()
-        {
-            int result = 0;
+    //    public static int GetKeyId()
+    //    {
+    //        int result = 0;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlCommand command = conn.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "sp_key_id";
+    //        using (SqlConnection conn = new SqlConnection(connectionString))
+    //        {
+    //            SqlCommand command = conn.CreateCommand();
+    //            command.CommandType = CommandType.StoredProcedure;
+    //            command.CommandText = "sp_key_id";
 
-                SqlParameter parameter = new SqlParameter("@key", SqlDbType.Int);
-                parameter.Direction = ParameterDirection.Output;
-                command.Parameters.Add(parameter);
+    //            SqlParameter parameter = new SqlParameter("@key", SqlDbType.Int);
+    //            parameter.Direction = ParameterDirection.Output;
+    //            command.Parameters.Add(parameter);
 
-                conn.Open();
-                command.ExecuteNonQuery();
-                int.TryParse(parameter.Value.ToString(), out result);
-            }
+    //            conn.Open();
+    //            command.ExecuteNonQuery();
+    //            int.TryParse(parameter.Value.ToString(), out result);
+    //        }
 
-            return result;
-        }
-    }
+    //        return result;
+    //    }
+    //}
 }

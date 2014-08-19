@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ApplicationSettingsFactory.cs" />
+    <Compile Include="Configuration\ConnectionStringFactory.cs" />
     <Compile Include="Configuration\IApplicationSettings.cs" />
     <Compile Include="Configuration\WebConfigApplicationSettings.cs" />
     <Compile Include="Domain\BusinessRule.cs" />
