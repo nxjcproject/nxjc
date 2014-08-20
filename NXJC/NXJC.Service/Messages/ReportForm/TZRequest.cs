@@ -8,7 +8,7 @@ namespace NXJC.Service.Messages.ReportForm
 {
     public class TZRequest
     {
-        public int KeyID { get; set; }
+        public Guid KeyID { get; set; }
         public string ProductLineName { get; set; }
         public string ReportName { get; set; }
         public string StartTime { get; set; }

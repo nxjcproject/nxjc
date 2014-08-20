@@ -13,7 +13,36 @@
 
         $(document).ready(function () {
             loadGridData('first');
+            loadTZTxt('first');
         });
+
+        function loadTZTxt(myLoadType) {
+
+            var m_MsgData;
+            var dataToSend = "{id: '<%= KeyID %>'}";
+            $.ajax({
+                type: "POST",
+                url: "FormulaYearInformationService.asmx/GetTZInformations",
+                data: dataToSend,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (myLoadType == 'first') {
+                        m_MsgData = jQuery.parseJSON(msg.d);
+                        InitializeTZTxt(m_MsgData);
+                    }
+                    else if (myLoadType == 'last') {
+                        m_MsgData = jQuery.parseJSON(msg.d);
+                        $('#formulaYearInformation').datagrid('loadData', m_MsgData);
+                    }
+                }
+            });
+        };
+        function InitializeTZTxt(myData) {
+            //$('#txtNumber').attr('text', 'test');
+            $('#txtDate').textbox('setText', myData['Date']);
+            $('#txtRemarks').textbox('setText', myData['Remarks']);
+        };
 
         function loadGridData(myLoadType) {
 
@@ -53,6 +82,10 @@
     <title></title>
 </head>
 <body>
+    <div>
+        报表日期: <input id="txtDate" class="easyui-textbox" data-options="editable:false" style="width:50px;"/>
+        备注: <input id="txtRemarks" class="easyui-textbox" data-options="editable:false" style="width:50px;"/>
+    </div>
     <table id="formulaYearInformation" class="easyui-datagrid" title="" style="width:700px;height:250px"
 			data-options="singleSelect:true,collapsible:true">
 		<thead>

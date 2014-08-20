@@ -52,9 +52,7 @@
     <Compile Include="Messages\ReportForm\TZResponse.cs" />
     <Compile Include="Services\Monitoring\IMonitoringService.cs" />
     <Compile Include="Services\Monitoring\MonitoringService.cs" />
-    <Compile Include="Services\ReportForm\IFormulaYear.cs" />
-    <Compile Include="Services\ReportForm\IReportFormService.cs" />
-    <Compile Include="Services\ReportForm\ITZ.cs" />
+    <Compile Include="Services\ReportForm\IReportService.cs" />
     <Compile Include="Services\ReportForm\ReportService.cs" />
     <Compile Include="Messages\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -65,7 +65,7 @@ namespace NXJC.Repository.ReportForm
             dataFactory.Remove(delete);
         }
 
-        public TZ FindBy(int id)
+        public TZ FindBy(Guid id)
         {
             Query query = new Query("TZ");
             query.AddCriterion("KeyID", id, CriteriaOperator.Equal);
@@ -89,7 +89,6 @@ namespace NXJC.Repository.ReportForm
             {
                 return new TZ();
             }
-
         }
 
         public IEnumerable<TZ> FindAll()

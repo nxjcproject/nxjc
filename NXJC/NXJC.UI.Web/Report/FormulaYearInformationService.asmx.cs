@@ -32,5 +32,18 @@ namespace NXJC.UI.Web.Report
             string result = JsonHelper.ObjectToJson(response.FormulaYearViews);
             return result;
         }
+        [WebMethod]
+        public string GetTZInformations(Guid id)
+        {
+            TZRequest request = new TZRequest
+            {
+                KeyID = id
+            };
+            IReportService service = new ReportService();
+            TZResponse response = service.GetTZInformationByKeyID(request);
+
+            string result = JsonHelper.ObjectToJson(response.TZView);
+            return result;
+        }
     }
 }

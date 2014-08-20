@@ -6,7 +6,7 @@ using NXJC.Infrastructure.Domain;
 
 namespace NXJC.Model.ReportForm.Repository
 {
-    public interface ITZRepository : IRepository<TZ,int>
+    public interface ITZRepository : IRepository<TZ,Guid>
     {
     }
 }

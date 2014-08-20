@@ -15,7 +15,7 @@ using NXJC.Model.ReportForm.Repository;
 
 namespace NXJC.Service.Services.ReportForm
 {
-    public class ReportService : IReportFormService
+    public class ReportService : IReportService
     {
         ITZRepository tzRepository = new TZRepository();
         IReportRepository reportRepository = new ReportRepository();
@@ -97,6 +97,16 @@ namespace NXJC.Service.Services.ReportForm
 
             response.FormulaYearViews = results.ConvertToViews();
 
+            return response;
+        }
+
+        public TZResponse GetTZInformationByKeyID(TZRequest request)
+        {
+            TZ tz = tzRepository.FindBy(request.KeyID);
+            TZResponse response = new TZResponse
+            {
+                TZView = tz.ConvertToView()
+            };
             return response;
         }
 
