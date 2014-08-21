@@ -36,7 +36,7 @@ namespace NXJC.UI.Web.Report
                 total = response.TZViews.Count(),
                 rows = response.TZViews
             };
-            //string result = "{\"total\": 2, \"rows\":" + JsonHelper.ObjectToJson(response.TZViews) + "}";
+            
             string result = JsonHelper.ObjectToJson(jsonclass);
             return result;
         }

@@ -126,7 +126,7 @@
                         <option value="日报">日报</option>
                   </select>
             报表名称: <input id="reportName" class="easyui-combobox" style="width:100px"
-					url="ReportInformationService.asmx/GetReportNames"
+					url="Service/ReportInformationService.asmx/GetReportNames"
 					valueField="ID" textField="Name">
 			起始日期: <input id="startTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:90px">
 			至: <input id="endTime" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser" style="width:90px">

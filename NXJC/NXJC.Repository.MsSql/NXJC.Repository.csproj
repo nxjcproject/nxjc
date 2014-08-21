@@ -51,6 +51,7 @@
     <Compile Include="Monitoring\RealtimeRepository.cs" />
     <Compile Include="ProductLineRepository.cs" />
     <Compile Include="ReportForm\FormulaYearRepository.cs" />
+    <Compile Include="ReportForm\ReportDataHelper.cs" />
     <Compile Include="ReportForm\ReportRepository.cs" />
     <Compile Include="ReportForm\TZRepository.cs" />
     <Compile Include="UnitOfWork.cs" />

@@ -41,12 +41,19 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataTypeConvert">
+      <HintPath>..\Lib\DataTypeConvert.dll</HintPath>
+    </Reference>
+    <Reference Include="ExportFileForWeb">
+      <HintPath>..\Lib\ExportFileForWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
@@ -159,8 +166,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Monitoring.css" />
     <Content Include="Report\FormulaYearInformation.aspx" />
-    <Content Include="Report\FormulaYearInformationService.asmx" />
-    <Content Include="Report\ReportInformationService.asmx" />
+    <Content Include="Report\ReportTemplate\ExportFiles.aspx" />
+    <Content Include="Report\Service\FormulaYearInformationService.asmx" />
+    <Content Include="Report\Service\ReportInformationService.asmx" />
     <Content Include="Scripts\easyui\easyloader.js" />
     <Content Include="Scripts\easyui\jquery.easyui.min.js" />
     <Content Include="Scripts\easyui\jquery.min.js" />
@@ -552,6 +560,10 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.fullscreen.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\reportjs\ExportGird2Excel.js" />
+    <Content Include="Scripts\reportjs\OnlineReportEditTemplate.js" />
+    <Content Include="Scripts\reportjs\PrintGrid.js" />
+    <Content Include="Scripts\reportjs\TypeConverter.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -588,7 +600,15 @@
     <Compile Include="Report\FormulaYearInformation.aspx.designer.cs">
       <DependentUpon>FormulaYearInformation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Report\FormulaYearInformationService.asmx.cs">
+    <Compile Include="Report\ReportTemplate\ExportFiles.aspx.cs">
+      <DependentUpon>ExportFiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportTemplate\ExportFiles.aspx.designer.cs">
+      <DependentUpon>ExportFiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportTemplate\ReportDataSaveAnother.cs" />
+    <Compile Include="Report\Service\FormulaYearInformationService.asmx.cs">
       <DependentUpon>FormulaYearInformationService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
@@ -599,10 +619,12 @@
     <Compile Include="Report\ReportInformation.aspx.designer.cs">
       <DependentUpon>ReportInformation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Report\ReportInformationService.asmx.cs">
+    <Compile Include="Report\Service\ReportInformationService.asmx.cs">
       <DependentUpon>ReportInformationService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\ReportTemplate\ReportDataGroup.cs" />
+    <Compile Include="Report\ReportTemplate\ReportTemplateHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

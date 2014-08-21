@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NXJC.Infrastructure.Domain;
+using System.Runtime.Serialization;
 
 namespace NXJC.Model.ReportForm
 {
+    //[DataContract]
     public class FormulaYear : EntityBase<Guid>, IAggregateRoot
     {
         public Guid KeyID { get; set; }

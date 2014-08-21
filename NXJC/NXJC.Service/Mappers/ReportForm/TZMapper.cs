@@ -26,10 +26,13 @@ namespace NXJC.Service.Mappers.ReportForm
                 Date = item.Date,
                 ModifiedFlag = item.ModifiedFlag,
                 ModifierName = GetModifierName(item.ModifierID),
+                ModifierID = item.ModifierID,
                 ProductLineName = GetProductLineName(item.ProductLineID),
+                ProductLineID = item.ProductLineID,
                 Remarks = item.Remarks,
                 Version = item.Version,
-                ReportName = GetReportNameById(item.ReportID)
+                ReportName = GetReportNameById(item.ReportID),
+                ReportID = item.ReportID
             };
         }
 
@@ -45,18 +48,17 @@ namespace NXJC.Service.Mappers.ReportForm
 
         public static TZ ConvertToTz(this TZView item)
         {
-            return new TZ();
-            //{
-            //    KEY_ID = item.KEY_ID,
-            //    ProductLineId = item.ProductLineId,
-            //    NAME = item.NAME,
-            //    Version = item.Version,
-            //        //班别 = item.班别,
-            //    报表类型 = item.报表类型,
-            //    报表日期 = item.报表日期,
-            //    备注 = item.备注,
-            //    名称 = item.名称
-            //};
+            TZ result = new TZ();
+            result.KeyID = item.KeyID;
+            result.ModifiedFlag = item.ModifiedFlag;
+            result.Date = item.Date;
+            result.Version = item.Version;
+            result.CreationDate = item.CreationDate;
+            result.ModifierID = item.ModifierID;
+            result.ReportID = item.ReportID;
+            result.ProductLineID = item.ProductLineID;
+            result.Remarks = item.Remarks;
+            return result;
         }
 
         public static IEnumerable<TZ> ConvertToTzs(this IEnumerable<TZView> items)

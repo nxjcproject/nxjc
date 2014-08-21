@@ -1,0 +1,88 @@
+﻿using NXJC.Infrastructure.Configuration;
+using NXJC.Model.ReportForm;
+using SqlServerDataAdapter;
+using SqlServerDataAdapter.Infrastruction;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Transactions;
+
+namespace NXJC.Repository.ReportForm
+{
+    public class ReportDataHelper
+    {
+        private string connString;
+        private ISqlServerDataFactory dataFactory;
+
+        public ReportDataHelper()
+        {
+            connString = ConnectionStringFactory.GetNXJCConnectionString();
+            dataFactory = new SqlServerDataFactory(connString);
+        }
+
+        public DataTable GetFormulaYearTable(Guid keyId)
+        {
+            Query query = new Query("FormulaYear");
+            query.AddCriterion("KeyID", keyId, CriteriaOperator.Equal);
+            DataTable dt = dataFactory.Query(query);
+            return dt;
+        }
+
+        public string ChangeFormulaYear(IList<FormulaYear> deleteItems, IList<FormulaYear> updateItems, IList<FormulaYear> insertItems)
+        {
+            try
+            {
+                foreach (var item in deleteItems)
+                {
+                    Delete delete = new Delete("FormulaYear");
+                    delete.AddCriterions("KeyID", item.KeyID, CriteriaOperator.Equal);
+                    dataFactory.Remove(delete);
+                }
+                foreach (var item in updateItems)
+                {
+                    Update<FormulaYear> update = new Update<FormulaYear>("FormulaYear", item);
+                    update.AddCriterion("KeyID", item.KeyID, CriteriaOperator.Equal);
+                    update.AddExcludeField("KeyID");
+                    update.AddExcludeField("Id");
+                    dataFactory.Save<FormulaYear>(update);
+                }
+                foreach (var item in insertItems)
+                {
+                    Insert<FormulaYear> insert = new Insert<FormulaYear>("FormulaYear", item);
+                    insert.AddExcludeField("Id");
+                    dataFactory.Save<FormulaYear>(insert);
+                }
+            }
+            catch
+            {
+                return "0";
+            }
+            return "1";
+        }
+
+        public string SaveAnotherFormulaYear(IList<FormulaYear> childrenValues, TZ tzValue)
+        {
+            Guid newKeyID = Guid.NewGuid();
+            using (TransactionScope scope = new TransactionScope())
+            {
+                foreach (var item in childrenValues)
+                {
+                    item.KeyID = newKeyID;
+                    Insert<FormulaYear> insert = new Insert<FormulaYear>("FormulaYear", item);
+                    insert.AddExcludeField("Id");
+                    dataFactory.Save<FormulaYear>(insert);
+                }
+                tzValue.KeyID = newKeyID;
+                Insert<TZ> insertTz = new Insert<TZ>("TZ", tzValue);
+                insertTz.AddExcludeField("Id");
+                dataFactory.Save<TZ>(insertTz);
+
+                scope.Complete();
+            }
+
+            return "1";
+        }
+    }
+}
