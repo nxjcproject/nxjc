@@ -22,6 +22,7 @@ namespace NXJC.Service.Mappers.ReportForm
             return new TZView
             {
                 KeyID = item.KeyID,
+                TableName = item.TableName,
                 CreationDate = item.CreationDate,
                 Date = item.Date,
                 ModifiedFlag = item.ModifiedFlag,
@@ -50,6 +51,7 @@ namespace NXJC.Service.Mappers.ReportForm
         {
             TZ result = new TZ();
             result.KeyID = item.KeyID;
+            result.TableName = item.TableName;
             result.ModifiedFlag = item.ModifiedFlag;
             result.Date = item.Date;
             result.Version = item.Version;

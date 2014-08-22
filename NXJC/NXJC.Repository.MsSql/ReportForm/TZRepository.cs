@@ -74,6 +74,7 @@ namespace NXJC.Repository.ReportForm
             if (table.Rows.Count > 0)
             {
                 TZ result = new TZ();
+                result.TableName = table.Rows[0]["TableName"].ToString().Trim();
                 result.KeyID = (Guid)table.Rows[0]["KeyID"];
                 result.ProductLineID = int.Parse(table.Rows[0]["ProductLineID"].ToString().Trim());
                 result.ReportID = int.Parse(table.Rows[0]["ReportID"].ToString().Trim());
@@ -106,15 +107,16 @@ namespace NXJC.Repository.ReportForm
             {
                 TZ tz = new TZ();
 
-                    tz.KeyID = (Guid)row["KeyID"];
-                    tz.ProductLineID = int.Parse(row["ProductLineID"].ToString().Trim());
-                    tz.ReportID = int.Parse(row["ReportID"].ToString().Trim());
-                    tz.Date = row["Date"].ToString().Trim();
-                    tz.CreationDate = (DateTime)row["CreationDate"];
-                    tz.ModifierID = row["ModifierID"].ToString().Trim();
-                    tz.Version = (DateTime)row["Version"];
-                    tz.ModifiedFlag = (bool)row["ModifiedFlag"];
-                    tz.Remarks = row["Remarks"].ToString().Trim();
+                tz.KeyID = (Guid)row["KeyID"];
+                tz.ProductLineID = int.Parse(row["ProductLineID"].ToString().Trim());
+                tz.ReportID = int.Parse(row["ReportID"].ToString().Trim());
+                tz.TableName = row["TableName"].ToString().Trim();
+                tz.Date = row["Date"].ToString().Trim();
+                tz.CreationDate = (DateTime)row["CreationDate"];
+                tz.ModifierID = row["ModifierID"].ToString().Trim();
+                tz.Version = (DateTime)row["Version"];
+                tz.ModifiedFlag = (bool)row["ModifiedFlag"];
+                tz.Remarks = row["Remarks"].ToString().Trim();
                 //result.Add(new TZ
                 //{
                 //    KeyID = (Guid)row["KeyID"],
@@ -127,7 +129,7 @@ namespace NXJC.Repository.ReportForm
                 //    ModifiedFlag = (bool)row["ModifiedFlag"],
                 //    Remarks = row["Remarks"].ToString().Trim()
                 //});
-                    result.Add(tz);
+                result.Add(tz);
             }
             return result;
         }

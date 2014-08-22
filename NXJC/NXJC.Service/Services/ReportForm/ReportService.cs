@@ -93,9 +93,9 @@ namespace NXJC.Service.Services.ReportForm
         {
             FormulaYearResponse response = new FormulaYearResponse();
 
-            IEnumerable<FormulaYear> results = formulaYearRepository.GetBy(request.KeyID);
+            //IEnumerable<FormulaYear> results = formulaYearRepository.GetBy(request.KeyID);
 
-            response.FormulaYearViews = results.ConvertToViews();
+            //response.FormulaYearViews = results.ConvertToViews();
 
             return response;
         }

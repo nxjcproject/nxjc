@@ -15,8 +15,8 @@ namespace NXJC.Service.Mappers.ReportForm
             return new FormulaYearView
             {
                 KeyID = item.KeyID,
-                number = item.number,
-                Energy = item.Energy
+                //number = item.number,
+                //Energy = item.Energy
             };
         }
 
@@ -37,8 +37,8 @@ namespace NXJC.Service.Mappers.ReportForm
             return new FormulaYear
             {
                 KeyID = item.KeyID,
-                number = item.number,
-                Energy = item.Energy
+                //number = item.number,
+                //Energy = item.Energy
             };
         }
 

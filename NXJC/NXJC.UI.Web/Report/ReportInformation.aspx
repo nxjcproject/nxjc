@@ -79,7 +79,7 @@
                     title: '编辑',
                     field:'action',
                     formatter: function (value, row, index) {
-                        return '<a href="FormulaYearInformation.aspx?id=' + row['KeyID']+'" onclick="saverow(this)">详细</a>'
+                        return '<a href="FormulaYearInformation.aspx?id=' + row['KeyID']+ '&tablename=' + row['TableName'] + '" onclick="saverow(this)">详细</a>'
                     }
                 }]]
             });

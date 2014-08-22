@@ -55,15 +55,23 @@ namespace NXJC.UI.Web.Report
         }
         /*************************************************************************************/
         [WebMethod]
-        public string GetFormulaYearTemplateData(Guid id)
+        public string GetFormulaYearTemplateData(Guid id, string tableName)
         {
             ReportDataHelper dataHelper = new ReportDataHelper();
-            DataTable dt = dataHelper.GetFormulaYearTable(id);
-            return ReportTemplateHelper.GetFormulaYearReportTemplate(dt);
+            DataTable dt = dataHelper.GetFormulaYearTable(id, tableName);
+            DataGridColumnType columnType = new DataGridColumnType
+            {
+                ColumnText = new string[] { "KeyID", "Number", "层次码", "工序名称", "峰期电耗", "尖峰期电耗", "谷期电耗", "平期电耗", "总计" },
+                ColumnWidth = new int[] { 80, 230, 130, 130, 130, 130, 130, 130, 130 },
+                ColumnType = new string[] { "", "\"type\":\"text\"", "\"type\":\"text\"", "\"type\":\"text\"",
+                "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", 
+                "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}" }
+            };
+            return ReportTemplateHelper.GetDataGridTemplate(dt, columnType);
         }
 
         [WebMethod]
-        public string ChangeDataByGrid(string myJsonData)
+        public string ChangeDataByGrid(string myJsonData, string tableName)
         {
             string m_GridJson = myJsonData;
             DataContractJsonSerializer m_JsonDs = new DataContractJsonSerializer(typeof(ReportDataGroup<NXJC.Model.ReportForm.FormulaYear,TZView>));
@@ -71,13 +79,13 @@ namespace NXJC.UI.Web.Report
             ReportDataGroup<NXJC.Model.ReportForm.FormulaYear,TZView> m_ReportDataGroup = (ReportDataGroup<NXJC.Model.ReportForm.FormulaYear,TZView>)m_JsonDs.ReadObject(m_JsonStringMs);
 
             ReportDataHelper dataHelper = new ReportDataHelper();
-            string result = dataHelper.ChangeFormulaYear(m_ReportDataGroup.deleted, m_ReportDataGroup.updated, m_ReportDataGroup.inserted);
+            string result = dataHelper.ChangeFormulaYear(tableName,m_ReportDataGroup.deleted, m_ReportDataGroup.updated, m_ReportDataGroup.inserted);
 
             return "1";
         }
 
         [WebMethod]
-        public string SaveAnotherByGrid(string myJsonData)
+        public string SaveAnotherByGrid(string myJsonData, string tableName)
         {
             string m_GridJson = myJsonData;
 
@@ -90,7 +98,7 @@ namespace NXJC.UI.Web.Report
             tzValue.Version = DateTime.Now;
 
             ReportDataHelper dataHelper = new ReportDataHelper();
-            string result = dataHelper.SaveAnotherFormulaYear(saveAnotherObject.ChildrenValue, tzValue);
+            string result = dataHelper.SaveAnotherFormulaYear(tableName,saveAnotherObject.ChildrenValue, tzValue);
 
             return result;
         }

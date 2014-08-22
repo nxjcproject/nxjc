@@ -14,6 +14,7 @@ namespace NXJC.Service.Views.ReportForm
         public string ProductLineName { get; set; }
         public int ReportID { get; set; }
         public string ReportName { get; set; }
+        public string TableName { get; set; }
         public string Date { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? Version { get; set; }

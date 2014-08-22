@@ -64,22 +64,22 @@ namespace NXJC.Repository.ReportForm
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IEnumerable<FormulaYear> GetBy(Guid id)
-        {
-            IList<FormulaYear> result = new List<FormulaYear>();
-            Query query = new Query("FormulaYear");
-            query.AddCriterion("KeyID", id, SqlServerDataAdapter.Infrastruction.CriteriaOperator.Equal);
-            DataTable dt = dataFactory.Query(query);
-            foreach (DataRow row in dt.Rows)
-            {
-                FormulaYear item = new FormulaYear();
-                item.Energy = int.Parse(row["Energy"].ToString().Trim());
-                item.KeyID = (Guid)row["KeyID"];
-                item.number = int.Parse(row["number"].ToString().Trim());
-                result.Add(item);
-            }
-            return result;
-        }
+        //public IEnumerable<FormulaYear> GetBy(Guid id)
+        //{
+        //    IList<FormulaYear> result = new List<FormulaYear>();
+        //    Query query = new Query("FormulaYear");
+        //    query.AddCriterion("KeyID", id, SqlServerDataAdapter.Infrastruction.CriteriaOperator.Equal);
+        //    DataTable dt = dataFactory.Query(query);
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        FormulaYear item = new FormulaYear();
+        //        item.Energy = int.Parse(row["Energy"].ToString().Trim());
+        //        item.KeyID = (Guid)row["KeyID"];
+        //        item.number = int.Parse(row["number"].ToString().Trim());
+        //        result.Add(item);
+        //    }
+        //    return result;
+        //}
 
         public IEnumerable<FormulaYear> FindAll()
         {

@@ -49,7 +49,7 @@
             $.ajax({
                 type: "POST",
                 url: "Service/FormulaYearInformationService.asmx/GetFormulaYearTemplateData",
-                data: "{id: '<%= KeyID %>'}",
+                data: "{id: '<%= KeyID %>',tableName:'<%= TableName %>'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
@@ -185,7 +185,7 @@
             $.ajax({
                 type: "POST",
                 url: "Service/FormulaYearInformationService.asmx/ChangeDataByGrid",
-                data: "{myJsonData:'" + JSON.stringify(changesRows) + "'}",
+                data: "{myJsonData:'" + JSON.stringify(changesRows) + "',tableName:'<%= TableName %>'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
@@ -222,7 +222,7 @@
             $.ajax({
                 type: "POST",
                 url: "Service/FormulaYearInformationService.asmx/SaveAnotherByGrid",
-                data: "{myJsonData:'" + JSON.stringify(data2service) + "'}",
+                data: "{myJsonData:'" + JSON.stringify(data2service) + "',tableName:'<%= TableName %>'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
