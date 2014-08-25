@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using JsonSerialize;
 using NXJC.Service.Views.ReportForm;
+using NXJC.Service.Mappers.ReportForm;
 
 namespace NXJC.UI.Web.Report
 {
@@ -20,14 +21,15 @@ namespace NXJC.UI.Web.Report
         }
 
         [WebMethod]
-        public static string GetTZInformation(string reportType,string reportName, string startTime, string endTime)
+        public static string GetTZInformation(string reportType, string reportName, string modifiedFlag, string startTime, string endTime)
         {
             TZRequest request = new TZRequest
             {
                 EndTime = endTime,
                 ReportName = reportName,
                 ReportType = reportType,
-                StartTime = startTime
+                StartTime = startTime,
+                ModifiedFlag = modifiedFlag
             };
             ReportService service = new ReportService();
             TZResponse response = service.GetTZ(request);
@@ -38,6 +40,23 @@ namespace NXJC.UI.Web.Report
             };
             
             string result = JsonHelper.ObjectToJson(jsonclass);
+            return result;
+        }
+
+        [WebMethod]
+        public static string GetReportName(string reportTypeId)
+        {
+            ReportRequest request = new ReportRequest
+            {
+                ReportType = int.Parse(reportTypeId)
+            };
+            ReportService service = new ReportService();
+            ReportResponse response = service.GetRepoersByType(request);
+
+            IEnumerable<ReportNameView> reportName = response.Reports.ConvertToReportNameViews();
+
+            string result = JsonHelper.ObjectToJson(reportName);
+
             return result;
         }
     }

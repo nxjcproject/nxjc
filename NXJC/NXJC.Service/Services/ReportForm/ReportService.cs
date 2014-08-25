@@ -29,7 +29,7 @@ namespace NXJC.Service.Services.ReportForm
         public TZResponse GetTZ(TZRequest request)
         {
             Query query = new Query("TZ");
-            if (request.ReportType == "年报")
+            if (request.ReportType == "1")
             {
                 string startTime = request.StartTime.Split('-')[0];
                 string endTime = request.EndTime.Split('-')[0];
@@ -37,17 +37,27 @@ namespace NXJC.Service.Services.ReportForm
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____", CriteriaOperator.Like);
+                if (request.ModifiedFlag != "0")
+                {
+                    bool modifiedFlag = bool.Parse(request.ModifiedFlag);
+                    query.AddCriterion("ModifiedFlag","modifiedflag", modifiedFlag, CriteriaOperator.Equal);
+                }
             }
-            else if (request.ReportType == "月报")
+            else if (request.ReportType == "2")
             {
-                string startTime = request.StartTime.Split('-')[0] + request.StartTime.Split('-')[1];
-                string endTime = request.EndTime.Split('-')[0] + request.EndTime.Split('-')[1];
+                string startTime = request.StartTime.Split('-')[0] + "-" + request.StartTime.Split('-')[1];
+                string endTime = request.EndTime.Split('-')[0] + "-" + request.EndTime.Split('-')[1];
                 query.AddCriterion("ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__", CriteriaOperator.Like);
+                if (request.ModifiedFlag != "0")
+                {
+                    bool modifiedFlag = bool.Parse(request.ModifiedFlag);
+                    query.AddCriterion("ModifiedFlag", "modifiedflag", modifiedFlag, CriteriaOperator.Equal);
+                }
             }
-            else if (request.ReportType == "日报")
+            else if (request.ReportType == "3")
             {
                 string startTime = request.StartTime.Split('-')[0] + request.StartTime.Split('-')[1] + request.StartTime.Split('-')[2];
                 string endTime = request.EndTime.Split('-')[0] + request.EndTime.Split('-')[1] + request.EndTime.Split('-')[2];
@@ -55,6 +65,11 @@ namespace NXJC.Service.Services.ReportForm
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__-__", CriteriaOperator.Like);
+                if (request.ModifiedFlag != "0")
+                {
+                    bool modifiedFlag = bool.Parse(request.ModifiedFlag);
+                    query.AddCriterion("ModifiedFlag","modifiedflag", modifiedFlag, CriteriaOperator.Equal);
+                }
             }
             else
             {
@@ -107,6 +122,18 @@ namespace NXJC.Service.Services.ReportForm
             {
                 TZView = tz.ConvertToView()
             };
+            return response;
+        }
+
+        public ReportResponse GetRepoersByType(ReportRequest request)
+        {
+            ReportResponse response = new ReportResponse();
+
+            Query query = new Query("Report");
+            query.AddCriterion("Type", request.ReportType, CriteriaOperator.Equal);
+            IEnumerable<Report> reports = reportRepository.FindBy(query);
+            response.Reports = reports;
+
             return response;
         }
 

@@ -61,9 +61,9 @@ namespace NXJC.UI.Web.Report
             DataTable dt = dataHelper.GetFormulaYearTable(id, tableName);
             DataGridColumnType columnType = new DataGridColumnType
             {
-                ColumnText = new string[] { "KeyID", "Number", "层次码", "工序名称", "峰期电耗", "尖峰期电耗", "谷期电耗", "平期电耗", "总计" },
-                ColumnWidth = new int[] { 80, 230, 130, 130, 130, 130, 130, 130, 130 },
-                ColumnType = new string[] { "", "\"type\":\"text\"", "\"type\":\"text\"", "\"type\":\"text\"",
+                ColumnText = new string[] { "KeyID","序号", "层次码", "工序名称", "峰期电耗", "尖峰期电耗", "谷期电耗", "平期电耗", "总计" },
+                ColumnWidth = new int[] { 80,130 , 130, 130, 130, 130, 130, 130, 130 },
+                ColumnType = new string[] { "", "\"type\":\"text\"","\"type\":\"text\"", "\"type\":\"text\"",
                 "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", 
                 "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}" }
             };
@@ -92,15 +92,21 @@ namespace NXJC.UI.Web.Report
             //DataContractJsonSerializer m_JsonDs = new DataContractJsonSerializer(typeof(ReportDataSaveAnother<FormulaYear, TZView>));
             //MemoryStream m_JsonStringMs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(myJsonData));
             //ReportDataSaveAnother<FormulaYear, TZView> m_ReportDataGroup = (ReportDataSaveAnother<FormulaYear, TZView>)m_JsonDs.ReadObject(m_JsonStringMs);
+            try
+            {
+                ReportDataSaveAnother<FormulaYear, TZView> saveAnotherObject = (ReportDataSaveAnother<FormulaYear, TZView>)JsonHelper.JsonToObject(m_GridJson, new ReportDataSaveAnother<FormulaYear, TZView>());
+                TZ tzValue = saveAnotherObject.TzValue.FirstOrDefault().ConvertToTz();
+                tzValue.Version = DateTime.Now;
 
-            ReportDataSaveAnother<FormulaYear, TZView> saveAnotherObject = (ReportDataSaveAnother<FormulaYear, TZView>)JsonHelper.JsonToObject(m_GridJson, new ReportDataSaveAnother<FormulaYear, TZView>());
-            TZ tzValue = saveAnotherObject.TzValue.FirstOrDefault().ConvertToTz();
-            tzValue.Version = DateTime.Now;
+                ReportDataHelper dataHelper = new ReportDataHelper();
+                string result = dataHelper.SaveAnotherFormulaYear(tableName, saveAnotherObject.ChildrenValue, tzValue);
 
-            ReportDataHelper dataHelper = new ReportDataHelper();
-            string result = dataHelper.SaveAnotherFormulaYear(tableName,saveAnotherObject.ChildrenValue, tzValue);
-
-            return result;
+                return result;
+            }
+            catch
+            {
+                return "-1";
+            }
         }
     }
 }

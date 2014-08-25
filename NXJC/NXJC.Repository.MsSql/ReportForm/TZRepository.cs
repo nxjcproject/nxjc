@@ -114,7 +114,10 @@ namespace NXJC.Repository.ReportForm
                 tz.Date = row["Date"].ToString().Trim();
                 tz.CreationDate = (DateTime)row["CreationDate"];
                 tz.ModifierID = row["ModifierID"].ToString().Trim();
-                tz.Version = (DateTime)row["Version"];
+                if (row["Version"].ToString().Trim() != "")
+                {
+                    tz.Version = (DateTime)row["Version"];
+                }
                 tz.ModifiedFlag = (bool)row["ModifiedFlag"];
                 tz.Remarks = row["Remarks"].ToString().Trim();
                 //result.Add(new TZ

@@ -16,5 +16,7 @@ namespace NXJC.Service.Services.ReportForm
         FormulaYearResponse GetFormulaYearByKeyID(FormulaYearRequest request);
 
         TZResponse GetTZInformationByKeyID(TZRequest request);
+
+        ReportResponse GetRepoersByType(ReportRequest request);
     }
 }

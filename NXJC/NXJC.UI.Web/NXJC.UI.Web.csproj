@@ -165,7 +165,20 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Monitoring.css" />
-    <Content Include="Report\FormulaYearInformation.aspx" />
+    <Content Include="Report\table_AmmeterSummitLowFlatDayInformation.aspx" />
+    <Content Include="Report\table_AmmeterSummitLowFlatMonthInformation.aspx" />
+    <Content Include="Report\table_AmmeterSummitLowFlatYearInformation.aspx" />
+    <Content Include="Report\table_CementMillProductionLineMonthlyElectricityConsumptionInformation.aspx" />
+    <Content Include="Report\table_CementYeldPerUnitDistributionPowerConsumptionYearlyInformation.aspx" />
+    <Content Include="Report\table_ClinkerYeldPerUnitDistributionEnergyConsumptionYearlyInformation.aspx" />
+    <Content Include="Report\table_ConsumptionMonthlyCoalDustInformation.aspx" />
+    <Content Include="Report\table_ClinkerProductionLineMonthlyOutputInformation.aspx" />
+    <Content Include="Report\table_ClinkerProductionLineMonthlyElectricityConsumptionInformation.aspx" />
+    <Content Include="Report\table_CementMillProductionLineMonthlyOutputInformation.aspx" />
+    <Content Include="Report\table_FormulaDayInformation.aspx" />
+    <Content Include="Report\table_FormulaGroupDayInformation.aspx" />
+    <Content Include="Report\table_FormulaMonthInformation.aspx" />
+    <Content Include="Report\table_FormulaYearInformation.aspx" />
     <Content Include="Report\ReportTemplate\ExportFiles.aspx" />
     <Content Include="Report\Service\FormulaYearInformationService.asmx" />
     <Content Include="Report\Service\ReportInformationService.asmx" />
@@ -567,7 +580,9 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -593,12 +608,103 @@
       <DependentUpon>Views.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report\FormulaYearInformation.aspx.cs">
-      <DependentUpon>FormulaYearInformation.aspx</DependentUpon>
+    <Compile Include="Report\table_AmmeterSummitLowFlatDayInformation.aspx.cs">
+      <DependentUpon>table_AmmeterSummitLowFlatDayInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Report\FormulaYearInformation.aspx.designer.cs">
-      <DependentUpon>FormulaYearInformation.aspx</DependentUpon>
+    <Compile Include="Report\table_AmmeterSummitLowFlatDayInformation.aspx.designer.cs">
+      <DependentUpon>table_AmmeterSummitLowFlatDayInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_AmmeterSummitLowFlatMonthInformation.aspx.cs">
+      <DependentUpon>table_AmmeterSummitLowFlatMonthInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_AmmeterSummitLowFlatMonthInformation.aspx.designer.cs">
+      <DependentUpon>table_AmmeterSummitLowFlatMonthInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_AmmeterSummitLowFlatYearInformation.aspx.cs">
+      <DependentUpon>table_AmmeterSummitLowFlatYearInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_AmmeterSummitLowFlatYearInformation.aspx.designer.cs">
+      <DependentUpon>table_AmmeterSummitLowFlatYearInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_CementMillProductionLineMonthlyElectricityConsumptionInformation.aspx.cs">
+      <DependentUpon>table_CementMillProductionLineMonthlyElectricityConsumptionInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_CementMillProductionLineMonthlyElectricityConsumptionInformation.aspx.designer.cs">
+      <DependentUpon>table_CementMillProductionLineMonthlyElectricityConsumptionInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_CementYeldPerUnitDistributionPowerConsumptionYearlyInformation.aspx.cs">
+      <DependentUpon>table_CementYeldPerUnitDistributionPowerConsumptionYearlyInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_CementYeldPerUnitDistributionPowerConsumptionYearlyInformation.aspx.designer.cs">
+      <DependentUpon>table_CementYeldPerUnitDistributionPowerConsumptionYearlyInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_ClinkerYeldPerUnitDistributionEnergyConsumptionYearlyInformation.aspx.cs">
+      <DependentUpon>table_ClinkerYeldPerUnitDistributionEnergyConsumptionYearlyInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_ClinkerYeldPerUnitDistributionEnergyConsumptionYearlyInformation.aspx.designer.cs">
+      <DependentUpon>table_ClinkerYeldPerUnitDistributionEnergyConsumptionYearlyInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_ConsumptionMonthlyCoalDustInformation.aspx.cs">
+      <DependentUpon>table_ConsumptionMonthlyCoalDustInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_ConsumptionMonthlyCoalDustInformation.aspx.designer.cs">
+      <DependentUpon>table_ConsumptionMonthlyCoalDustInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_ClinkerProductionLineMonthlyOutputInformation.aspx.cs">
+      <DependentUpon>table_ClinkerProductionLineMonthlyOutputInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_ClinkerProductionLineMonthlyOutputInformation.aspx.designer.cs">
+      <DependentUpon>table_ClinkerProductionLineMonthlyOutputInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_ClinkerProductionLineMonthlyElectricityConsumptionInformation.aspx.cs">
+      <DependentUpon>table_ClinkerProductionLineMonthlyElectricityConsumptionInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_ClinkerProductionLineMonthlyElectricityConsumptionInformation.aspx.designer.cs">
+      <DependentUpon>table_ClinkerProductionLineMonthlyElectricityConsumptionInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_CementMillProductionLineMonthlyOutputInformation.aspx.cs">
+      <DependentUpon>table_CementMillProductionLineMonthlyOutputInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_CementMillProductionLineMonthlyOutputInformation.aspx.designer.cs">
+      <DependentUpon>table_CementMillProductionLineMonthlyOutputInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_FormulaDayInformation.aspx.cs">
+      <DependentUpon>table_FormulaDayInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_FormulaDayInformation.aspx.designer.cs">
+      <DependentUpon>table_FormulaDayInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_FormulaGroupDayInformation.aspx.cs">
+      <DependentUpon>table_FormulaGroupDayInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_FormulaGroupDayInformation.aspx.designer.cs">
+      <DependentUpon>table_FormulaGroupDayInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_FormulaMonthInformation.aspx.cs">
+      <DependentUpon>table_FormulaMonthInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_FormulaMonthInformation.aspx.designer.cs">
+      <DependentUpon>table_FormulaMonthInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\table_FormulaYearInformation.aspx.cs">
+      <DependentUpon>table_FormulaYearInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\table_FormulaYearInformation.aspx.designer.cs">
+      <DependentUpon>table_FormulaYearInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\ReportTemplate\ExportFiles.aspx.cs">
       <DependentUpon>ExportFiles.aspx</DependentUpon>

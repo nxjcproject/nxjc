@@ -84,5 +84,6 @@ namespace NXJC.Repository.ReportForm
 
             return "1";
         }
+
     }
 }

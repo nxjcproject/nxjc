@@ -43,11 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mappers\ReportForm\FormulaYearMapper.cs" />
+    <Compile Include="Mappers\ReportForm\ReportMapper.cs" />
     <Compile Include="Mappers\ReportForm\TZMapper.cs" />
     <Compile Include="Messages\ReportForm\FormulaYearRequest.cs" />
     <Compile Include="Messages\ReportForm\FormulaYearResponse.cs" />
     <Compile Include="Messages\ReportForm\FormulaYearSaveRequest.cs" />
     <Compile Include="Messages\ReportForm\FormulaYearSaveResponse.cs" />
+    <Compile Include="Messages\ReportForm\ReportRequest.cs" />
+    <Compile Include="Messages\ReportForm\ReportResponse.cs" />
     <Compile Include="Messages\ReportForm\TZRequest.cs" />
     <Compile Include="Messages\ReportForm\TZResponse.cs" />
     <Compile Include="Services\Monitoring\IMonitoringService.cs" />

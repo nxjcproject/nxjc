@@ -13,7 +13,7 @@ namespace NXJC.Service.Messages.ReportForm
         public string ReportName { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
-        public bool ModifiedFlag { get; set; }
+        public string ModifiedFlag { get; set; }
         public string ReportType { get; set; }
     }
 }
