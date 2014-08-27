@@ -16,7 +16,6 @@ namespace NXJC.Model.ReportForm
         public string LevelCode { get; set; }
         public string ProcessName { get; set; }
         public int PeakPower { get; set; }
-        public int HighPeakPower { get; set; }
         public int ValleyPower { get; set; }
         public int FlatPower { get; set; }
         public int TotalPower { get; set; }

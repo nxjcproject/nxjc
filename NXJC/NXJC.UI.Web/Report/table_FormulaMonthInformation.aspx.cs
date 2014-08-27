@@ -27,7 +27,7 @@ namespace NXJC.UI.Web.PeakValleyFlat
             {
                 //conn.Open();
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT [KeyID],[层次码],[工序名称],峰期电耗,尖峰期电耗,谷期电耗,平期电耗,合计电耗 FROM [table_FormulaMonth]";
+                cmd.CommandText = "SELECT [KeyID],[层次码],[工序名称],峰期电耗,谷期电耗,平期电耗,合计电耗 FROM [table_FormulaMonth]";
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
                 da.Fill(dt);
@@ -35,9 +35,9 @@ namespace NXJC.UI.Web.PeakValleyFlat
 
             DataGridColumnType columnType = new DataGridColumnType
             {
-                ColumnText = new string[] { "ID", "层次码", "工序名称", "峰期电耗", "尖峰期电耗", "谷期电耗", "平期电耗", "合计电耗" },
-                ColumnWidth = new int[] { 10,  50, 60, 60, 70, 60, 60, 65 },
-                ColumnType = new string[] { "", "", "", "", "", "", "", "" }
+                ColumnText = new string[] { "ID", "层次码", "工序名称", "峰期电耗","谷期电耗", "平期电耗", "合计电耗" },
+                ColumnWidth = new int[] { 10,  50, 60, 60, 60, 60, 65 },
+                ColumnType = new string[] { "", "", "", "", "", "", "" }
             };
 
             string result = ReportTemplateHelper.GetDataGridTemplate(dt, columnType);
