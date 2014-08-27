@@ -61,11 +61,11 @@ namespace NXJC.UI.Web.Report
             DataTable dt = dataHelper.GetFormulaYearTable(id, tableName);
             DataGridColumnType columnType = new DataGridColumnType
             {
-                ColumnText = new string[] { "KeyID","序号", "层次码", "工序名称", "峰期电耗", "尖峰期电耗", "谷期电耗", "平期电耗", "总计" },
-                ColumnWidth = new int[] { 80,130 , 130, 130, 130, 130, 130, 130, 130 },
+                ColumnText = new string[] { "KeyID","序号", "层次码", "工序名称", "峰期电耗", "谷期电耗", "平期电耗", "总计" },
+                ColumnWidth = new int[] { 80,130 , 130, 130, 130, 130, 130, 130 },
                 ColumnType = new string[] { "", "\"type\":\"text\"","\"type\":\"text\"", "\"type\":\"text\"",
                 "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", 
-                "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}" }
+                "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}" }
             };
             return ReportTemplateHelper.GetDataGridTemplate(dt, columnType);
         }
