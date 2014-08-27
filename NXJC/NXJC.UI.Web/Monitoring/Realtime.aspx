@@ -104,7 +104,7 @@
 
         function getLatestData() {
             // 发送 asynchronous POST 请求获取最新数据
-            dto = { 'productionLine': '<%= ProductionLine %>', 'sceneName': "<%= SceneName %>" };
+            dto = { 'productLineId': '<%= ProductLineId %>', 'sceneName': "<%= SceneName %>" };
             varType = "POST";
             varContentType = "application/json; charset=utf-8";
             varDataType = "json";

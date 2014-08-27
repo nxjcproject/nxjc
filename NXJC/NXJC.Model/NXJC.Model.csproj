@@ -53,8 +53,8 @@
     <Compile Include="EnergyEfficiency\Repository\IItemRepository.cs" />
     <Compile Include="Monitoring\DataItem.cs" />
     <Compile Include="Monitoring\DataItemBusinessRules.cs" />
-    <Compile Include="Monitoring\DataPathInformation.cs" />
-    <Compile Include="Monitoring\Repository\IContrastTableRepository.cs" />
+    <Compile Include="ProcessDataFoundation\DataPathInformation.cs" />
+    <Compile Include="ProcessDataFoundation\Repository\IContrastTableRepository.cs" />
     <Compile Include="Monitoring\Repository\IRealtimeRepository.cs" />
     <Compile Include="Monitoring\SceneMonitor.cs" />
     <Compile Include="ProductLine.cs" />

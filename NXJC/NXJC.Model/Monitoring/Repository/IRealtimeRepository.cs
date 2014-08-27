@@ -1,4 +1,5 @@
 ﻿using NXJC.Infrastructure.Domain;
+using NXJC.Model.ProcessDataFoundation;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,6 @@ namespace NXJC.Model.Monitoring.Repository
         /// </summary>
         /// <param name="dataPathInfor"></param>
         /// <returns></returns>
-        DataTable GetDataItemTable(IEnumerable<DataPathInformation> dataPathInfor);
+        DataTable GetDataItemTable(int productLineId, IEnumerable<DataPathInformation> dataPathInfor);
     }
 }

@@ -10,6 +10,5 @@ namespace NXJC.Infrastructure.Configuration
         string NXJCConnectionString { get; }
         string ProcessDataConnectionString { get; }
         string IndustryEnergy_SHConnectionString { get; }
-        string Db_01_WastedHeatPowerConnectionString { get; }
     }
 }

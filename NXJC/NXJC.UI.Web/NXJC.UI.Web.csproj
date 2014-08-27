@@ -42,10 +42,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DataTypeConvert">
-      <HintPath>..\Lib\DataTypeConvert.dll</HintPath>
+      <HintPath>..\..\Lib\DataTypeConvert.dll</HintPath>
     </Reference>
     <Reference Include="ExportFileForWeb">
-      <HintPath>..\Lib\ExportFileForWeb.dll</HintPath>
+      <HintPath>..\..\Lib\ExportFileForWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -165,6 +165,47 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Monitoring.css" />
+    <Content Include="Monitoring\Templates\Common\circle_red.png" />
+    <Content Include="Monitoring\Templates\Common\Map.JPG" />
+    <Content Include="Monitoring\Templates\Common\TechnologicalProcess.bmp" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementGrindProcess_6\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementGrindProcess_6\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementGrindProcess_7\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementGrindProcess_7\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementPacking\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementPacking\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementStorehouse\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_ND\CementStorehouse\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_ND\ClinkerConveyor\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_ND\ClinkerConveyor\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\snfm\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\snfm\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\CementGrind\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\CementGrind\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\ClinkerDispenseAndStore\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\ClinkerDispenseAndStore\template.jpg" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\ClinkerDistribution\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\ClinkerDistribution\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\FMH\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\FMH\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\kyjf\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\kyjf\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\mfzb\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\mfzb\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RawMaterialIngredients\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RawMaterialIngredients\template.jpg" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RawMaterialUnload\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RawMaterialUnload\template.jpg" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RawMealHomogenizeSilo\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RawMealHomogenizeSilo\template.jpg" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RollerPress\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\RollerPress\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\scyt\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\scyt\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\scyw\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\scyw\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\snks\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_YFC\snks\template.png" />
     <Content Include="Report\table_AmmeterSummitLowFlatDayInformation.aspx" />
     <Content Include="Report\table_AmmeterSummitLowFlatMonthInformation.aspx" />
     <Content Include="Report\table_AmmeterSummitLowFlatYearInformation.aspx" />
@@ -517,18 +558,18 @@
     <Content Include="Monitoring\DataProvider.asmx" />
     <Content Include="Monitoring\Realtime.aspx" />
     <None Include="Scripts\jquery-1.7.1-vsdoc.js" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\BoilerSmokeSystem\template.html" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\BoilerSmokeSystem\template.png" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\BoilerSteamSystem\template.html" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\BoilerSteamSystem\template.png" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\HeatExchangeStation\template.html" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\HeatExchangeStation\template.png" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\TurbineGeneralAppearance\template.html" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\TurbineGeneralAppearance\template.png" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\TurbineLubeOilSystem\template.html" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\TurbineLubeOilSystem\template.png" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\WaterSupplySystem\template.png" />
-    <Content Include="Monitoring\Templates\Db_01_WastedHeatPower\WaterSupplySystem\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\BoilerSmokeSystem\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\BoilerSmokeSystem\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\BoilerSteamSystem\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\BoilerSteamSystem\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\HeatExchangeStation\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\HeatExchangeStation\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\TurbineGeneralAppearance\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\TurbineGeneralAppearance\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\TurbineLubeOilSystem\template.html" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\TurbineLubeOilSystem\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\WaterSupplySystem\template.png" />
+    <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\WaterSupplySystem\template.html" />
     <Content Include="Monitoring\Views.aspx" />
     <Content Include="Report\ReportInformation.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -572,6 +613,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.fullscreen.js" />
+    <Content Include="Scripts\jquery.utility.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\reportjs\ExportGird2Excel.js" />
     <Content Include="Scripts\reportjs\OnlineReportEditTemplate.js" />

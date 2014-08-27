@@ -1,6 +1,7 @@
 ﻿using NXJC.Infrastructure.Configuration;
 using NXJC.Model.Monitoring;
 using NXJC.Model.Monitoring.Repository;
+using NXJC.Model.ProcessDataFoundation;
 using SqlServerDataAdapter;
 using SqlServerDataAdapter.Infrastruction;
 using System;
@@ -15,14 +16,6 @@ namespace NXJC.Repository.Monitoring
 {
     public class RealtimeRepository : IRealtimeRepository
     {
-        ISqlServerDataFactory dataFactory;
-
-        public RealtimeRepository()
-        {
-            string connectionString = ApplicationSettingsFactory.GetApplicationSettings().Db_01_WastedHeatPowerConnectionString;
-            dataFactory = new SqlServerDataFactory(connectionString);
-        }
-
         public SceneMonitor GetLatest(string sceneName)
         {
             SceneMonitor sceneMonitor = new SceneMonitor();
@@ -50,8 +43,11 @@ namespace NXJC.Repository.Monitoring
         /// </summary>
         /// <param name="dataPathInfor"></param>
         /// <returns></returns>
-        public DataTable GetDataItemTable(IEnumerable<DataPathInformation> dataPathInfor)
+        public DataTable GetDataItemTable(int productLineId, IEnumerable<DataPathInformation> dataPathInfor)
         {
+            string connectionString = ConnectionStringFactory.GetByProductLineId(productLineId);
+            ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
+
             ComplexQuery cmpquery = new ComplexQuery();
             foreach (var item in dataPathInfor)
             {

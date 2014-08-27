@@ -18,13 +18,6 @@ namespace NXJC.Infrastructure.Configuration
             get { return ConfigurationManager.ConnectionStrings["IndustryEnergy_SH"].ToString(); }
         }
 
-
-        public string Db_01_WastedHeatPowerConnectionString
-        {
-            get { return ConfigurationManager.ConnectionStrings["Db_01_WastedHeatPower"].ToString(); }
-        }
-
-
         public string ProcessDataConnectionString
         {
             get { return ConfigurationManager.ConnectionStrings["ProcessData"].ToString(); }

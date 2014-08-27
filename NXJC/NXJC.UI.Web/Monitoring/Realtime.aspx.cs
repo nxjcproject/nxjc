@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NXJC.Infrastructure.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,15 +10,25 @@ namespace NXJC.UI.Web.Monitoring
 {
     public partial class Realtime : System.Web.UI.Page
     {
-        public string ProductionLine { get; set; }
+        public int ProductLineId { get; set; }
         public string SceneName { get; set; }
         public string TemplatePath { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ProductionLine = Request["productionLine"];
+            int productLineId = 0;
+            try
+            {
+                productLineId = int.Parse(Request["productLineId"]);
+            }
+            catch
+            {
+            }
+
+            string templateFolder = ConnectionStringFactory.ProcessCatalogDictionary[productLineId];
+            ProductLineId = productLineId;
             SceneName = Request["viewName"];
-            TemplatePath = "/Monitoring/Templates/Db_01_WastedHeatPower/" + SceneName + "/template.html";
+            TemplatePath = "/Monitoring/Templates/" + templateFolder + "/" + SceneName + "/template.html";
         }
     }
 }

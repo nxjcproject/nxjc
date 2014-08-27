@@ -1,6 +1,9 @@
 ﻿using NXJC.Model.Monitoring;
 using NXJC.Model.Monitoring.Repository;
+using NXJC.Model.ProcessDataFoundation;
+using NXJC.Model.ProcessDataFoundation.Repository;
 using NXJC.Repository.Monitoring;
+using NXJC.Repository.ProcessDataFoundation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,26 +16,21 @@ namespace NXJC.Service.Services.Monitoring
 {
     public class MonitoringService : IMonitoringService
     {
-        IContrastTableRepository contrastTableRepository;
-        IRealtimeRepository realtimeRepository;
-
-        public MonitoringService()
-        {
-            contrastTableRepository = new ContrastTableRepository();
-            realtimeRepository = new RealtimeRepository();
-        }
+        IContrastTableRepository contrastTableRepository = new ContrastTableRepository();
+        IRealtimeRepository realtimeRepository = new RealtimeRepository();
 
         /// <summary>
         /// 获得视图实时数据
         /// </summary>
+        /// <param name="productLineId"></param>
         /// <param name="viewName"></param>
         /// <returns></returns>
-        public IEnumerable<Model.Monitoring.DataItem> GetRealtimeDataItems(string viewName)
+        public IEnumerable<DataItem> GetRealtimeDataItems(int productLineId, string viewName)
         {
             IList<DataItem> result = new List<DataItem>();
-            ArrayList idList = contrastTableRepository.GetVariableId(viewName);
-            IEnumerable<DataPathInformation> dataPathInfor = contrastTableRepository.GetDataPaths(viewName);
-            DataTable table = realtimeRepository.GetDataItemTable(dataPathInfor);
+            ArrayList idList = contrastTableRepository.GetVariableId(productLineId, viewName);
+            IEnumerable<DataPathInformation> dataPathInfor = contrastTableRepository.GetDataPaths(productLineId, viewName);
+            DataTable table = realtimeRepository.GetDataItemTable(productLineId, dataPathInfor);
             foreach (var item in idList)
             {
                 result.Add(new DataItem

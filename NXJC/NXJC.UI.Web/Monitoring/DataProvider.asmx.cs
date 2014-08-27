@@ -23,11 +23,11 @@ namespace NXJC.UI.Web.Monitoring
         //private static IRealtimeRepository realtimeRepository = new RealtimeRepository();
 
         [WebMethod]
-        public SceneMonitor GetCurrentSceneMonitor(string productionLine, string sceneName)
+        public SceneMonitor GetCurrentSceneMonitor(int productLineId, string sceneName)
         {
             IMonitoringService service = new MonitoringService();
 
-            IEnumerable<DataItem> dataItems = service.GetRealtimeDataItems(sceneName);
+            IEnumerable<DataItem> dataItems = service.GetRealtimeDataItems(productLineId, sceneName);
             SceneMonitor result = new SceneMonitor
             {
                 Id = DateTime.Now,
@@ -37,13 +37,6 @@ namespace NXJC.UI.Web.Monitoring
             //return realtimeRepository.GetCurrent(sceneName);
             return result;
 
-        }
-
-        private string GetConnectionStringByProductionLineName(string productionLineName)
-        {
-            string result = "Data Source=DEC-WINSVR12;Initial Catalog=Db_01_WastedHeatPower;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True";
-
-            return result;
         }
     }
 }

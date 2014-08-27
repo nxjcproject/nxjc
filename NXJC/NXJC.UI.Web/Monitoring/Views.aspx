@@ -8,6 +8,7 @@
     <title>监控</title>
     <script type="text/javascript" src="/Scripts/jquery-ui-1.11.0.custom/external/jquery/jquery.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-ui-1.11.0.custom/jquery-ui.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.utility.js"></script>
     <link rel="stylesheet" type="text/css" href="/Scripts/jquery-ui-1.11.0.custom/jquery-ui.css"/>
     <link rel="stylesheet" type="text/css" href="/Content/Monitoring.css" />
     <script>
@@ -27,7 +28,7 @@
 
             $(".ui-tabs-nav li").click(function () {
                 var tabId = $(this).attr("id");
-                var url = "Realtime.aspx?productionLine=1&viewName=" + tabId;
+                var url = "Realtime.aspx?productLineId=" + $.getUrlParam("productLineId") + "&viewName=" + tabId;
 
                 $("#tabs_iframe").attr("src", url);
             });
@@ -45,7 +46,7 @@
     <form id="form1" runat="server">
         <div id="tabs" class="tabs-bottom">
             <ul>
-                <% foreach (var view in DisplayNameDictionary)
+                <% foreach (var view in ViewNameDictionary)
                    { %>
                 <li id="<%= view.Key %>"><a href="#tabs-content"><%= view.Value %></a></li>
                 <% } %>

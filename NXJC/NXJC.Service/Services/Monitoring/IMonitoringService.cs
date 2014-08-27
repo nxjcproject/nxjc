@@ -12,8 +12,9 @@ namespace NXJC.Service.Services.Monitoring
         /// <summary>
         /// 获得视图实时数据
         /// </summary>
+        /// <param name="productLineId"></param>
         /// <param name="viewName"></param>
         /// <returns></returns>
-        IEnumerable<DataItem> GetRealtimeDataItems(string viewName);
+        IEnumerable<DataItem> GetRealtimeDataItems(int productLineId, string viewName);
     }
 }
