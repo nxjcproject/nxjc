@@ -33,11 +33,22 @@ namespace NXJC.Service.Services.Monitoring
             DataTable table = realtimeRepository.GetDataItemTable(productLineId, dataPathInfor);
             foreach (var item in idList)
             {
-                result.Add(new DataItem
+                if (table.Rows[0][item.ToString().Trim()].ToString() == "True" || table.Rows[0][item.ToString().Trim()].ToString() == "False")
                 {
-                    ID = item.ToString().Trim(),
-                    Value = table.Rows[0][item.ToString().Trim()].ToString().Trim()
-                });
+                    result.Add(new DataItem
+                    {
+                        ID = item.ToString().Trim(),
+                        Value = (table.Rows[0][item.ToString().Trim()].ToString() == "True") ? "1" : "0"
+                    });
+                }
+                else
+                {
+                    result.Add(new DataItem
+                    {
+                        ID = item.ToString().Trim(),
+                        Value = table.Rows[0][item.ToString().Trim()].ToString().Trim()
+                    });
+                }
             }
             return result;
         }

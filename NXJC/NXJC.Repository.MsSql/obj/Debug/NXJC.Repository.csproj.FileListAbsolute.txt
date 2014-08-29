@@ -51,3 +51,4 @@ E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Model.pdb
 E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\obj\Debug\NXJC.Repository.csprojResolveAssemblyReference.cache
 E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\obj\Debug\NXJC.Repository.dll
 E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\obj\Debug\NXJC.Repository.pdb
+E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\AutoMapper.dll
