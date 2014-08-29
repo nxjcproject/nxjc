@@ -10,8 +10,13 @@
     <script src="/Scripts/easyui/jquery.min.js"></script>
     <script src="/Scripts/easyui/jquery.easyui.min.js"></script>
     <script src="/Scripts/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script src="/Scripts/jquery.utility.js"></script>
     <title></title>
     <script type="text/javascript">
+        var pageId = $.getUrlParam("PageId");
+        var requestReportType = pageId.split(',')[0];
+        var requestReportId = pageId.split(',')[1];
+
         function myformatter(date) {
             var y = date.getFullYear();
             var m = date.getMonth() + 1;
@@ -31,8 +36,8 @@
             }
         }
         function DataToServer() {
-            var reportType = $('#reportType').combobox('getValue');
-            var reportName = $('#reportName').combobox('getValue');
+            var reportType = requestReportType;//$('#reportType').combobox('getValue');
+            var reportName = requestReportId;//$('#reportName').combobox('getValue');
             var modifiedFlag = $('#modifiedFlag').combobox('getValue');
             var startTime = $('#startTime').datebox('getValue');
             var endTime = $('#endTime').datebox('getValue');
@@ -71,7 +76,7 @@
                     field: 'ModifierName'
                 }, {
                     width: '10%',
-                    title: '修改标志',
+                    title: '报表状态',
                     field: 'ModifiedFlag',
                     formatter: function (value) {
                         if (value == true)
@@ -156,13 +161,13 @@
 <body>
     <div id="tb" style="padding:5px;height:auto">
 		<div>
-            类型: <select id="reportType" class="easyui-combobox" name="state" style="width:65px" data-options="onSelect: GetReportName">
+            <%--类型: <select id="reportType" class="easyui-combobox" name="state" style="width:65px" data-options="onSelect: GetReportName">
                         <option value="0">请选择</option>
                         <option value="1">年报</option>
                         <option value="2">月报</option>
                         <option value="3">日报</option>
                   </select>
-            报表名称: <input id="reportName" class="easyui-combobox" style="width:200px" valueField="ID" textField="Name">
+            报表名称: <input id="reportName" class="easyui-combobox" style="width:200px" valueField="ID" textField="Name">--%>
             修改状态: <select id="modifiedFlag" class="easyui-combobox" name="state" style="width:65px">
                         <option value="0">请选择</option>
                         <option value="true">已修改</option>

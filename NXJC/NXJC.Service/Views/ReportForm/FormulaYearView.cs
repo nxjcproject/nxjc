@@ -9,7 +9,7 @@ namespace NXJC.Service.Views.ReportForm
     public class FormulaYearView
     {
         public Guid KeyID { get; set; }
-        public int number { get; set; }
+        //public int number { get; set; }
         public int Energy { get; set; }
     }
 }

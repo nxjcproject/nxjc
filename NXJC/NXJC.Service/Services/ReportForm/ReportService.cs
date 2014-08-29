@@ -33,7 +33,7 @@ namespace NXJC.Service.Services.ReportForm
             {
                 string startTime = request.StartTime.Split('-')[0];
                 string endTime = request.EndTime.Split('-')[0];
-                query.AddCriterion("ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
+                query.AddCriterion("ReportID", "ReportID",int.Parse(request.ReportName), CriteriaOperator.Equal);
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____", CriteriaOperator.Like);
@@ -47,7 +47,7 @@ namespace NXJC.Service.Services.ReportForm
             {
                 string startTime = request.StartTime.Split('-')[0] + "-" + request.StartTime.Split('-')[1];
                 string endTime = request.EndTime.Split('-')[0] + "-" + request.EndTime.Split('-')[1];
-                query.AddCriterion("ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
+                query.AddCriterion("ReportID", "ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__", CriteriaOperator.Like);
@@ -61,7 +61,7 @@ namespace NXJC.Service.Services.ReportForm
             {
                 string startTime = request.StartTime.Split('-')[0] + request.StartTime.Split('-')[1] + request.StartTime.Split('-')[2];
                 string endTime = request.EndTime.Split('-')[0] + request.EndTime.Split('-')[1] + request.EndTime.Split('-')[2];
-                query.AddCriterion("ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
+                query.AddCriterion("ReportID", "ReportID", int.Parse(request.ReportName), CriteriaOperator.Equal);
                 query.AddCriterion("Date", "startDate", startTime, CriteriaOperator.MoreThanOrEqual);
                 query.AddCriterion("Date", "endDate", endTime, CriteriaOperator.LessThanOrEqual);
                 query.AddCriterion("Date", "____-__-__", CriteriaOperator.Like);

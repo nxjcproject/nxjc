@@ -42,12 +42,3 @@ E:\NXJC\temp\NXJC\NXJC.Repository.MsSql\bin\Debug\SqlServerDataAdapter.dll
 E:\NXJC\temp\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Infrastructure.pdb
 E:\NXJC\temp\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Model.pdb
 E:\NXJC\temp\NXJC\NXJC.Repository.MsSql\bin\Debug\SqlServerDataAdapter.pdb
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Repository.dll
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Repository.pdb
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Infrastructure.dll
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Model.dll
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Infrastructure.pdb
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\bin\Debug\NXJC.Model.pdb
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\obj\Debug\NXJC.Repository.csprojResolveAssemblyReference.cache
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\obj\Debug\NXJC.Repository.dll
-E:\Git\nxjc\NXJC\NXJC.Repository.MsSql\obj\Debug\NXJC.Repository.pdb
