@@ -61,11 +61,11 @@ namespace NXJC.UI.Web.Report
             DataTable dt = dataHelper.GetFormulaYearTable(id, tableName);
             DataGridColumnType columnType = new DataGridColumnType
             {
-                ColumnText = new string[] { "KeyID","序号", "层次码", "工序名称", "峰期电耗", "谷期电耗", "平期电耗", "总计" },
-                ColumnWidth = new int[] { 80,130 , 130, 130, 130, 130, 130, 130 },
-                ColumnType = new string[] { "", "\"type\":\"text\"","\"type\":\"text\"", "\"type\":\"text\"",
-                "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}", 
-                "\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"2\"}" }
+                ColumnText = new string[] { "KeyID", "层次码", "工序名称", "峰期电耗", "谷期电耗", "平期电耗", "总计" },
+                ColumnWidth = new int[] { 80,130, 130, 130, 130, 130, 130 },
+                ColumnType = new string[] { "", "\"type\":\"text\"", "\"type\":\"text\"",
+                "\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}", "\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}", 
+                "\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}" }
             };
             return ReportTemplateHelper.GetDataGridTemplate(dt, columnType);
         }
@@ -73,15 +73,22 @@ namespace NXJC.UI.Web.Report
         [WebMethod]
         public string ChangeDataByGrid(string myJsonData, string tableName)
         {
-            string m_GridJson = myJsonData;
-            DataContractJsonSerializer m_JsonDs = new DataContractJsonSerializer(typeof(ReportDataGroup<NXJC.Model.ReportForm.FormulaYear,TZView>));
-            MemoryStream m_JsonStringMs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(myJsonData));
-            ReportDataGroup<NXJC.Model.ReportForm.FormulaYear,TZView> m_ReportDataGroup = (ReportDataGroup<NXJC.Model.ReportForm.FormulaYear,TZView>)m_JsonDs.ReadObject(m_JsonStringMs);
+            try
+            {
+                string m_GridJson = myJsonData;
+                DataContractJsonSerializer m_JsonDs = new DataContractJsonSerializer(typeof(ReportDataGroup<NXJC.Model.ReportForm.FormulaYear, TZView>));
+                MemoryStream m_JsonStringMs = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(myJsonData));
+                ReportDataGroup<NXJC.Model.ReportForm.FormulaYear, TZView> m_ReportDataGroup = (ReportDataGroup<NXJC.Model.ReportForm.FormulaYear, TZView>)m_JsonDs.ReadObject(m_JsonStringMs);
 
-            ReportDataHelper dataHelper = new ReportDataHelper();
-            string result = dataHelper.ChangeFormulaYear(tableName,m_ReportDataGroup.deleted, m_ReportDataGroup.updated, m_ReportDataGroup.inserted);
+                ReportDataHelper dataHelper = new ReportDataHelper();
+                string result = dataHelper.ChangeFormulaYear(tableName, m_ReportDataGroup.deleted, m_ReportDataGroup.updated, m_ReportDataGroup.inserted);
 
-            return "1";
+                return "1";
+            }
+            catch
+            {
+                return "-1";
+            }
         }
 
         [WebMethod]

@@ -165,19 +165,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\Monitoring.css" />
-    <Content Include="EasyUIDataGrid\EasyUIDataGridTemplate.js" />
-    <Content Include="Report\EnergyTotalMonthInformation.aspx" />
+<<<<<<< HEAD
     <Content Include="Monitoring\Templates\Common\circle_red.png" />
-    <Content Include="Monitoring\Templates\Common\greenD.png" />
-    <Content Include="Monitoring\Templates\Common\greenL.png" />
-    <Content Include="Monitoring\Templates\Common\grey.png" />
     <Content Include="Monitoring\Templates\Common\Map.JPG" />
-    <Content Include="Monitoring\Templates\Common\redD.png" />
-    <Content Include="Monitoring\Templates\Common\redL.png" />
     <Content Include="Monitoring\Templates\Common\TechnologicalProcess.bmp" />
-    <Content Include="Monitoring\Templates\Common\white.png" />
-    <Content Include="Monitoring\Templates\Common\yellowD.png" />
-    <Content Include="Monitoring\Templates\Common\yellowL.png" />
     <Content Include="Monitoring\Templates\Db_01_ND\CementGrindProcess_6\template.html" />
     <Content Include="Monitoring\Templates\Db_01_ND\CementGrindProcess_6\template.png" />
     <Content Include="Monitoring\Templates\Db_01_ND\CementGrindProcess_7\template.html" />
@@ -216,6 +207,9 @@
     <Content Include="Monitoring\Templates\Db_01_YFC\scyw\template.png" />
     <Content Include="Monitoring\Templates\Db_01_YFC\snks\template.html" />
     <Content Include="Monitoring\Templates\Db_01_YFC\snks\template.png" />
+=======
+    <Content Include="Report\EnergyTotalMonthInformation.aspx" />
+>>>>>>> 统计分析报表完成
     <Content Include="Report\table_AmmeterSummitLowFlatDayInformation.aspx" />
     <Content Include="Report\table_AmmeterSummitLowFlatMonthInformation.aspx" />
     <Content Include="Report\table_AmmeterSummitLowFlatYearInformation.aspx" />
@@ -567,7 +561,6 @@
     <Content Include="Scripts\easyui\themes\metro\window.css" />
     <Content Include="Monitoring\DataProvider.asmx" />
     <Content Include="Monitoring\Realtime.aspx" />
-    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\BoilerSmokeSystem\template.html" />
     <Content Include="Monitoring\Templates\Db_01_LS_WastedHeatPower2\BoilerSmokeSystem\template.png" />
@@ -626,7 +619,6 @@
     <Content Include="Scripts\jquery.fullscreen.js" />
     <Content Include="Scripts\jquery.utility.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\monitoringjs\blink.js" />
     <Content Include="Scripts\reportjs\ExportGird2Excel.js" />
     <Content Include="Scripts\reportjs\OnlineReportEditTemplate.js" />
     <Content Include="Scripts\reportjs\PrintGrid.js" />
@@ -639,7 +631,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EasyUIDataGrid\DataGridTemplateHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -11,7 +11,7 @@ namespace NXJC.Model.ReportForm
     public class FormulaYear : EntityBase<Guid>, IAggregateRoot
     {
         public Guid KeyID { get; set; }
-        public int Number { get; set; }
+        //public int Number { get; set; }
         //public int Energy { get; set; }
         public string LevelCode { get; set; }
         public string ProcessName { get; set; }
