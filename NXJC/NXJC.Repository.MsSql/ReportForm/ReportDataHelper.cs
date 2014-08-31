@@ -37,14 +37,17 @@ namespace NXJC.Repository.ReportForm
                 foreach (var item in deleteItems)
                 {
                     Delete delete = new Delete(tableName);
-                    delete.AddCriterions("KeyID", item.KeyID, CriteriaOperator.Equal);
+                    delete.AddCriterions("KeyID","myKeyID", item.KeyID, CriteriaOperator.Equal);
+                    delete.AddCriterions("ID","myID", item.ID, CriteriaOperator.Equal);
+                    delete.AddSqlOperator(SqlOperator.AND);
                     dataFactory.Remove(delete);
                 }
                 foreach (var item in updateItems)
                 {
                     Update<FormulaYear> update = new Update<FormulaYear>(tableName, item);
-                    update.AddCriterion("KeyID", item.KeyID, CriteriaOperator.Equal);
-                    update.AddExcludeField("KeyID");
+                    update.AddCriterion("KeyID", "myKeyID",item.KeyID, CriteriaOperator.Equal);
+                    update.AddCriterion("ID", "myID",item.ID, CriteriaOperator.Equal);
+                    update.AddSqlOperator(SqlOperator.AND);
                     update.AddExcludeField("Id");
                     dataFactory.Save<FormulaYear>(update);
                 }

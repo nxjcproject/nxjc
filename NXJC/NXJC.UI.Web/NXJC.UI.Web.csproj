@@ -226,6 +226,7 @@
     <Content Include="Report\table_ClinkerProductionLineMonthlyOutputInformation.aspx" />
     <Content Include="Report\table_ClinkerProductionLineMonthlyElectricityConsumptionInformation.aspx" />
     <Content Include="Report\table_CementMillProductionLineMonthlyOutputInformation.aspx" />
+    <Content Include="Report\EnergyConsumptionAlarmInformation.aspx" />
     <Content Include="Report\table_FormulaDayInformation.aspx" />
     <Content Include="Report\table_FormulaGroupDayInformation.aspx" />
     <Content Include="Report\table_FormulaMonthInformation.aspx" />
@@ -739,6 +740,13 @@
     </Compile>
     <Compile Include="Report\table_CementMillProductionLineMonthlyOutputInformation.aspx.designer.cs">
       <DependentUpon>table_CementMillProductionLineMonthlyOutputInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\EnergyConsumptionAlarmInformation.aspx.cs">
+      <DependentUpon>EnergyConsumptionAlarmInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\EnergyConsumptionAlarmInformation.aspx.designer.cs">
+      <DependentUpon>EnergyConsumptionAlarmInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\table_FormulaDayInformation.aspx.cs">
       <DependentUpon>table_FormulaDayInformation.aspx</DependentUpon>

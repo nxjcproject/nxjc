@@ -10,6 +10,7 @@ namespace NXJC.Model.ReportForm
     //[DataContract]
     public class FormulaYear : EntityBase<Guid>, IAggregateRoot
     {
+        public int ID { get; set; }
         public Guid KeyID { get; set; }
         //public int Number { get; set; }
         //public int Energy { get; set; }
