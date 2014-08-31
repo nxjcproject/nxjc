@@ -24,9 +24,3 @@ E:\NXJC\temp\NXJC\NXJC.Infrastructure\bin\Debug\SqlServerDataAdapter.dll
 E:\NXJC\temp\NXJC\NXJC.Infrastructure\bin\Debug\SqlServerDataAdapter.pdb
 E:\NXJC\temp\NXJC\NXJC.Infrastructure\obj\Debug\NXJC.Infrastructure.dll
 E:\NXJC\temp\NXJC\NXJC.Infrastructure\obj\Debug\NXJC.Infrastructure.pdb
-E:\Git\nxjc\NXJC\NXJC.Infrastructure\bin\Debug\NXJC.Infrastructure.dll
-E:\Git\nxjc\NXJC\NXJC.Infrastructure\bin\Debug\NXJC.Infrastructure.pdb
-E:\Git\nxjc\NXJC\NXJC.Infrastructure\obj\Debug\NXJC.Infrastructure.dll
-E:\Git\nxjc\NXJC\NXJC.Infrastructure\obj\Debug\NXJC.Infrastructure.pdb
-E:\Git\nxjc\NXJC\NXJC.Infrastructure\obj\Debug\NXJC.Infrastructure.csprojResolveAssemblyReference.cache
-E:\Git\nxjc\NXJC\NXJC.Infrastructure\bin\Debug\AutoMapper.dll

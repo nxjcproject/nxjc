@@ -61,9 +61,9 @@ namespace NXJC.UI.Web.Report
             DataTable dt = dataHelper.GetFormulaYearTable(id, tableName);
             DataGridColumnType columnType = new DataGridColumnType
             {
-                ColumnText = new string[] { "KeyID", "层次码", "工序名称", "峰期电耗", "谷期电耗", "平期电耗", "总计" },
-                ColumnWidth = new int[] { 80,130, 130, 130, 130, 130, 130 },
-                ColumnType = new string[] { "", "\"type\":\"text\"", "\"type\":\"text\"",
+                ColumnText = new string[] { "KeyID","ID", "层次码", "工序名称", "峰期电耗", "谷期电耗", "平期电耗", "总计" },
+                ColumnWidth = new int[] { 80,80,130, 130, 130, 130, 130, 130 },
+                ColumnType = new string[] { "","", "\"type\":\"text\"", "\"type\":\"text\"",
                 "\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}", "\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}", 
                 "\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}","\"type\":\"numberbox\", \"options\":{\"precision\":\"0\"}" }
             };
