@@ -158,7 +158,7 @@
 
         function displayScene(scene) {
             // 显示监控画面参数
-            $("#sceneName").html(scene.Name);
+            // $("#sceneName").html(scene.Name);
             var datetime = getDatetimeFromJson(scene.Id);
             $("#timestamp").html(datetime);
             
@@ -171,7 +171,7 @@
                 $("#" + item.ID).val(item.Value);
             });
 
-            handleValueRRE_circle();
+            SwitchingValueRender();
         }
 
         function getDatetimeFromJson(jsonDate) {
@@ -186,9 +186,9 @@
 <body>
     <form id="form1" runat="server">
         <div style="font-size: 85%; position: fixed; top: 0; padding-left: 5px; width: 100%; background: white; height: 30px; z-index: 100;">
-            <span id="btnFullScreen" style="display: none;">全屏 | </span>画面：<span id="sceneName"></span> | 时间：<span id="timestamp"></span> | 
+            <span id="btnFullScreen" style="display: none;">全屏 | </span><!--画面：<span id="sceneName"></span> | -->时间：<span id="timestamp"></span> | 
             更新间隔：<input id="pollingIntervals" type="text" value="5000" /><input type="button" value="确定" onclick="setupPollingIntervals();" /> | 
-            状态：<span id="statue"></span> | <input id="btnToggle" type="button" value="暂停" onclick="toggle();" />
+            状态：<span id="statue"><a style="color: green;">运行中</a></span> | <input id="btnToggle" type="button" value="暂停" onclick="toggle();" />
             <!--<input type="button" value="tester" onclick="test()" />
             <input id="testtext" type="text" style="width:1000px" />-->
         </div>

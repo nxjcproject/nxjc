@@ -48,7 +48,7 @@
             <ul>
                 <% foreach (var view in ViewNameDictionary)
                    { %>
-                <li id="<%= view.Key %>"><a href="#tabs-content"><%= view.Value %></a></li>
+                <li id="<%= view.Key %>"><a href="#tabs-content"><%= NXJC.Infrastructure.Configuration.ViewsDictionary.Current.GetChineseSafely(view.Key) %></a></li>
                 <% } %>
             </ul>
             <div class="tabs-spacer"></div>
