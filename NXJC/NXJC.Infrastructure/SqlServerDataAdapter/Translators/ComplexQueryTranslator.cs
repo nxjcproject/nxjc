@@ -21,7 +21,7 @@ namespace SqlServerDataAdapter.Translators
                 result.Append("DISTINCT ");
             }
 
-            if (complexQuery.TopNumber != TopNumber.numberNull)
+            if (complexQuery.TopNumber!= 0)
             {
                 result.Append(TranslateHelper.GetTopNumber(complexQuery.TopNumber));
             }
@@ -32,10 +32,12 @@ namespace SqlServerDataAdapter.Translators
             }
             result.Remove(result.Length - 1, 1);
 
-            result.Append(" FROM ");
             result.Append(TranslateHelper.GetJoinConditionString(complexQuery.NeedFields, complexQuery.JoinCriterion));
 
-            TranslateHelper.GetCriterionString(result, complexQuery.Criterions, command, complexQuery.SqlOperator);
+            if (complexQuery.Criterions.Count() > 0)
+            {
+                TranslateHelper.GetCriterionString(result, complexQuery.Criterions, command, complexQuery.SqlOperator);
+            }
 
             if (complexQuery.OrderByClause != null)
             {

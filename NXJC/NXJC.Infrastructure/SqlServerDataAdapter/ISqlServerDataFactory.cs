@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -36,13 +37,13 @@ namespace SqlServerDataAdapter
         /// <returns></returns>
         DataTable Query(Query query);
         /// <summary>
-        /// 复杂检索数据库数据，返回泛型集合
+        /// 复杂检索数据库数据，返回DataTable
         /// </summary>
         /// <param name="complexQuery"></param>
         /// <returns></returns>
         DataTable Query(ComplexQuery complexQuery);
         /// <summary>
-        /// 一般检索数据库数据，返回ArrayList
+        /// 一般检索数据库数据，返回泛型集合
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="query"></param>

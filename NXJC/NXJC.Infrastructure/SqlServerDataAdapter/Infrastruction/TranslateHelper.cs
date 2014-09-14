@@ -23,7 +23,7 @@ namespace SqlServerDataAdapter.Infrastruction
                 case SqlOperator.OR:
                     return " OR ";
                 default:
-                    throw new Exception("Error");
+                    throw new Exception("错误的连接操作符");
             }
         }
 
@@ -32,19 +32,9 @@ namespace SqlServerDataAdapter.Infrastruction
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
-        public static string GetTopNumber(TopNumber number)
+        public static string GetTopNumber(int number)
         {
-            switch (number)
-            {
-                case TopNumber.numberNull:
-                    return "";
-                case TopNumber.top1:
-                    return "TOP 1 ";
-                case TopNumber.top10:
-                    return "TOP 10 ";
-                default:
-                    throw new Exception("Error");
-            }
+            return "TOP " + number + " ";
         }
 
         /// <summary>
@@ -78,6 +68,8 @@ namespace SqlServerDataAdapter.Infrastruction
             {
                 case CriteriaOperator.Equal:
                     return "=";
+                case CriteriaOperator.NotEqual:
+                    return "!=";
                 case CriteriaOperator.LessThanOrEqual:
                     return "<=";
                 case CriteriaOperator.MoreThanOrEqual:
@@ -171,20 +163,43 @@ namespace SqlServerDataAdapter.Infrastruction
                     index++;
                 }
             }
-
-            if (tableName.Keys.Count() >= 1)
+            if (tableName.Keys.Count() == 1)
             {
-                result.Append(tableName[0]);
-                for (int itemNo = 1; itemNo < index; itemNo++)
+                return " FROM " + tableName[0];
+            }
+
+            if (tableName.Keys.Count() > 1)
+            {
+                result.Append(" FROM ").Append(tableName[0]);
+
+                if (joinCriterion.DefaultJoinFieldName == "" || joinCriterion.DefaultJoinFieldName == null)
                 {
-                    result.Append(String.Format(" {0} {1} ON {2}.[{3}]={4}.[{5}]", 
-                        GetJoinType(joinCriterion),tableName[itemNo], tableName[0], 
-                        joinCriterion.JoinFieldName, tableName[itemNo], joinCriterion.JoinFieldName));
+                    if (tableName.Keys.Count() != joinCriterion.JoinFieldDictionary.Keys.Count())
+                    {
+                        throw new KeyNotFoundException("连接的表数目和字段数目不一致");
+                    }
+
+                    for (int itemNo = 1; itemNo < index; itemNo++)
+                    {
+                        result.Append(String.Format(" {0} {1} ON {2}.[{3}]={4}.[{5}]",
+                            GetJoinType(joinCriterion), tableName[itemNo], tableName[0],
+                            joinCriterion.JoinFieldDictionary[tableName[0]], tableName[itemNo], joinCriterion.JoinFieldDictionary[tableName[itemNo]]));
+                    }
+                }
+                else
+                {
+                    for (int itemNo = 1; itemNo < index; itemNo++)
+                    {
+                        if (joinCriterion.DefaultJoinFieldName != "" || joinCriterion.DefaultJoinFieldName != null)
+                            result.Append(String.Format(" {0} {1} ON {2}.[{3}]={4}.[{5}]",
+                                GetJoinType(joinCriterion), tableName[itemNo], tableName[0],
+                                joinCriterion.DefaultJoinFieldName, tableName[itemNo], joinCriterion.DefaultJoinFieldName));
+                    }
                 }
             }
             else
             {
-                throw new Exception("Error");
+                throw new Exception("连接字符串生产错误");
             }
 
             return result.ToString();

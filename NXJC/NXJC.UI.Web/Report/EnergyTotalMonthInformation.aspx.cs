@@ -23,7 +23,7 @@ namespace NXJC.UI.Web.Report
         [WebMethod]
         public static string GetTreeGridDatas()
         {
-            string connString = ConnectionStringFactory.GetNXJCConnectionString();
+            string connString = ConnectionStringFactorytenp.GetNXJCConnectionString();
             DataTable dt = new DataTable();
             using (SqlConnection conn = new SqlConnection(connString))
             {

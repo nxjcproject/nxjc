@@ -19,7 +19,7 @@ namespace NXJC.Repository
 
         public ProductLineRepository()
         {
-            connectionString = ConnectionStringFactory.GetNXJCConnectionString();
+            connectionString = ConnectionStringFactorytenp.GetNXJCConnectionString();
             dataFactory = new SqlServerDataFactory(connectionString);
         }
 

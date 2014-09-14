@@ -25,7 +25,7 @@ namespace NXJC.UI.Web.Monitoring
             {
             }
 
-            string templateFolder = ConnectionStringFactory.ProcessCatalogDictionary[productLineId];
+            string templateFolder = ConnectionStringFactorytenp.ProcessCatalogDictionary[productLineId];
             ProductLineId = productLineId;
             SceneName = Request["viewName"];
             TemplatePath = "/Monitoring/Templates/" + templateFolder + "/" + SceneName + "/template.html";

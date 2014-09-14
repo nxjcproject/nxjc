@@ -21,7 +21,7 @@ namespace NXJC.Repository.ProcessDataFoundation
         /// <returns></returns>
         public IDictionary<string, string> GetViewNames(int productLineId)
         {
-            string connectionString = ConnectionStringFactory.GetByProductLineId(productLineId);
+            string connectionString = ConnectionStringFactorytenp.GetByProductLineId(productLineId);
 
             IDictionary<string, string> result = new Dictionary<string, string>();
 
@@ -51,7 +51,7 @@ namespace NXJC.Repository.ProcessDataFoundation
         /// <returns></returns>
         public IEnumerable<DataPathInformation> GetDataPaths(int productLineId, string viewName)
         {
-            string connectionString = ConnectionStringFactory.GetByProductLineId(productLineId);
+            string connectionString = ConnectionStringFactorytenp.GetByProductLineId(productLineId);
             ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
 
             IList<DataPathInformation> results = new List<DataPathInformation>();
@@ -77,7 +77,7 @@ namespace NXJC.Repository.ProcessDataFoundation
         /// <returns></returns>
         public System.Collections.ArrayList GetVariableId(int productLineId, string viewName)
         {
-            string connectionString = ConnectionStringFactory.GetByProductLineId(productLineId);
+            string connectionString = ConnectionStringFactorytenp.GetByProductLineId(productLineId);
             ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
 
             ArrayList result = new ArrayList();

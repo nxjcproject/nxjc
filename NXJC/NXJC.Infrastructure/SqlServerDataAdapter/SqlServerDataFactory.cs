@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 using SqlServerDataAdapter.Translators;
 using AutoMapper;
+using System.Collections;
 
 namespace SqlServerDataAdapter
 {
@@ -47,9 +48,9 @@ namespace SqlServerDataAdapter
                     conn.Open();
                     result = cmd.ExecuteNonQuery();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new Exception("Error");
+                    throw new Exception(ex.Source + ":" + ex.Message);
                 }
             }
             return result;
@@ -74,9 +75,9 @@ namespace SqlServerDataAdapter
                     conn.Open();
                     result = cmd.ExecuteNonQuery();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new Exception("Error");
+                    throw new Exception(ex.Source + ":" + ex.Message);
                 }
             }
             return result;
@@ -101,9 +102,9 @@ namespace SqlServerDataAdapter
                     conn.Open();
                     result = cmd.ExecuteNonQuery();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new Exception("Error");
+                    throw new Exception(ex.Source + ":" + ex.Message);
                 }
             }
             return result;
@@ -128,9 +129,9 @@ namespace SqlServerDataAdapter
                     SqlDataAdapter ad = new SqlDataAdapter(cmd);
                     ad.Fill(result);
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new Exception("Error");
+                    throw new Exception(ex.Source + ":" + ex.Message);
                 }
             }
             return result;
@@ -155,9 +156,9 @@ namespace SqlServerDataAdapter
                     SqlDataAdapter ad = new SqlDataAdapter(cmd);
                     ad.Fill(result);
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new Exception("Error");
+                    throw new Exception(ex.Source + ":" + ex.Message);
                 }
             }
             return result;
@@ -174,7 +175,7 @@ namespace SqlServerDataAdapter
             IList<T> result = new List<T>();
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
-
+                
                 SqlCommand cmd = conn.CreateCommand();
                 QueryTranslator.TranslateIntoSelect(query, cmd);
 
@@ -187,9 +188,9 @@ namespace SqlServerDataAdapter
                         result.Add(Mapper.DynamicMap<T>(reader));
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new Exception("Error");
+                    throw new Exception(ex.Source + ":" + ex.Message);
                 }
             }
             return result;
@@ -217,9 +218,9 @@ namespace SqlServerDataAdapter
                         result.Add(Mapper.DynamicMap<T>(reader));
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
-                    throw new Exception("Error");
+                    throw new Exception(ex.Source + ":" + ex.Message);
                 }
             }
             return result;

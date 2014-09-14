@@ -18,7 +18,7 @@ namespace NXJC.Repository.ReportForm
 
         public ReportDataHelper()
         {
-            connString = ConnectionStringFactory.GetNXJCConnectionString();
+            connString = ConnectionStringFactorytenp.GetNXJCConnectionString();
             dataFactory = new SqlServerDataFactory(connString);
         }
 

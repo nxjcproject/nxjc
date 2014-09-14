@@ -45,7 +45,7 @@ namespace NXJC.Repository.Monitoring
         /// <returns></returns>
         public DataTable GetDataItemTable(int productLineId, IEnumerable<DataPathInformation> dataPathInfor)
         {
-            string connectionString = ConnectionStringFactory.GetByProductLineId(productLineId);
+            string connectionString = ConnectionStringFactorytenp.GetByProductLineId(productLineId);
             ISqlServerDataFactory dataFactory = new SqlServerDataFactory(connectionString);
 
             ComplexQuery cmpquery = new ComplexQuery();

@@ -40,7 +40,7 @@ namespace SqlServerDataAdapter
             _criterions = criterions.ToList();
         }
 
-        public TopNumber TopNumber { get; set; }
+        public int TopNumber { get; set; }
         /// <summary>
         /// 必要时使用字段的全称（表名加字段名）
         /// </summary>
@@ -50,7 +50,6 @@ namespace SqlServerDataAdapter
         public JoinCriterion JoinCriterion
         {
             get { return _joinCriterion; }
-            set { _joinCriterion = value; }
         }
 
         public IEnumerable<NeedField> NeedFields
@@ -69,6 +68,36 @@ namespace SqlServerDataAdapter
         {
             get { return _sqlOperator; }
             set { _sqlOperator = value; }
+        }
+
+        /// <summary>
+        /// 连接字段字典，键为表名，值为字段名
+        /// </summary>
+        /// <param name="joinFieldDictionary"></param>
+        /// <param name="joinType"></param>
+        public void AddJoinCriterion(IDictionary<string, string> joinFieldDictionary, JoinType joinType)
+        {
+            JoinCriterion join = new JoinCriterion();
+            join.JoinFieldDictionary = joinFieldDictionary;
+            join.JoinType = joinType;
+            _joinCriterion = join;
+        }
+        public void AddJoinCriterion(string defaultJoinFieldName, JoinType joinType)
+        {
+            JoinCriterion join = new JoinCriterion
+            {
+                DefaultJoinFieldName = defaultJoinFieldName,
+                JoinType = joinType
+            };
+            _joinCriterion = join;
+        }
+        public void AddJoinField(string tableName, string fieldName)
+        {
+            _joinCriterion.JoinFieldDictionary.Add(tableName, fieldName);
+        }
+        public void AddJoinType(JoinType type)
+        {
+            _joinCriterion.JoinType = type;
         }
 
         public void AddCriterion(string fieldName, string parameterName, object parameterValue, CriteriaOperator criteriaOperator)

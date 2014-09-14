@@ -22,7 +22,7 @@ namespace NXJC.UI.Web.NXJCReport
         [WebMethod]
         public static string GetCompanyData()
         {
-            string connString = ConnectionStringFactory.GetNXJCConnectionString();
+            string connString = ConnectionStringFactorytenp.GetNXJCConnectionString();
             DataTable dt = new DataTable();
             using (SqlConnection conn = new SqlConnection(connString))
             {

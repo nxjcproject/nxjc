@@ -40,8 +40,8 @@ namespace SqlServerDataAdapter.Translators
             sqlInsert.Append(") VALUES (");
             foreach (var item in insert.Values)
             {
-                sqlInsert.Append("@" + item.Key + ",");
-                command.Parameters.Add(ParameterDataNullHelper.ChangeNull("@" + item.Key, item.Value));
+                sqlInsert.Append("@I_" + item.Key + ",");
+                command.Parameters.Add(ParameterDataNullHelper.ChangeNull("@I_" + item.Key, item.Value));
             }
             sqlInsert.Remove(sqlInsert.Length - 1, 1);
             sqlInsert.Append(")");
@@ -63,16 +63,24 @@ namespace SqlServerDataAdapter.Translators
             //删除字段
             foreach (var item in update.ExcludeField)
             {
-                if (update.Vaules.ContainsKey(item.Name))
+                if (update.Values.ContainsKey(item.Name))
                 {
-                    update.Vaules.Remove(item.Name);
+                    update.Values.Remove(item.Name);
                 }
             }
+            //条件列也可能跟新
+            //foreach (var item in update.Criterions)
+            //{
+            //    if (update.Vaules.ContainsKey(item.FieldName))
+            //    {
+            //        update.Vaules.Remove(item.FieldName);
+            //    }
+            //}
 
-            foreach (var item in update.Vaules)
+            foreach (var item in update.Values)
             {
-                sqlUpdate.Append(item.Key + "=@" + item.Key + ",");
-                command.Parameters.Add(ParameterDataNullHelper.ChangeNull("@" + item.Key, item.Value));
+                sqlUpdate.Append(item.Key + "=@U_" + item.Key + ",");
+                command.Parameters.Add(ParameterDataNullHelper.ChangeNull("@U_" + item.Key, item.Value));
             }
             sqlUpdate.Remove(sqlUpdate.Length - 1, 1);
 

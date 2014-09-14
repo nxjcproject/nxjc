@@ -36,7 +36,7 @@ namespace SqlServerDataAdapter.Infrastruction
         {
             get
             {
-                if (_parameterName == "")
+                if (_parameterName == "" || _parameterName == null)
                     return _fieldName;
                 else
                     return _parameterName;
@@ -57,6 +57,7 @@ namespace SqlServerDataAdapter.Infrastruction
     public enum CriteriaOperator
     {
         Equal,
+        NotEqual,
         LessThanOrEqual,
         LessThan,
         MoreThanOrEqual,
