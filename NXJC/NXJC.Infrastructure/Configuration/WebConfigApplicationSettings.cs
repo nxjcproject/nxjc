@@ -13,6 +13,11 @@ namespace NXJC.Infrastructure.Configuration
             get { return ConfigurationManager.ConnectionStrings["ManagementData"].ToString(); }
         }
 
+        public string ConnectionStringModel
+        {
+            get { return ConfigurationManager.ConnectionStrings["ConnectionStringModel"].ToString(); }
+        }
+
         public string IndustryEnergy_SHConnectionString
         {
             get { return ConfigurationManager.ConnectionStrings["IndustryEnergy_SH"].ToString(); }
