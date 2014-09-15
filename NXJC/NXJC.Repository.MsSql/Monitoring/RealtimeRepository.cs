@@ -55,10 +55,10 @@ namespace NXJC.Repository.Monitoring
             }
             cmpquery.JoinCriterion = new JoinCriterion
             {
-                JoinFieldName = "v_date",
+                DefaultJoinFieldName = "v_date",
                 JoinType = JoinType.FULL_JOIN
             };
-            cmpquery.TopNumber = TopNumber.top1;
+            cmpquery.TopNumber = 1;
             //cmpquery.OrderByClause = new OrderByClause("realtime_line_data.v_date", true);
             DataTable table = dataFactory.Query(cmpquery);
 

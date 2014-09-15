@@ -48,7 +48,7 @@ namespace NXJC.UI.Web.Monitoring
             DataItem result = new DataItem();
             ComplexQuery cmpquery = new ComplexQuery();
             cmpquery.AddNeedField(dataSetInformation.TableName, dataSetInformation.FieldName, dataSetInformation.FieldName);
-            cmpquery.TopNumber = TopNumber.top1;
+            cmpquery.TopNumber = 1;
             cmpquery.OrderByClause = new OrderByClause("v_date", true);
             DataTable table = dataFactory.Query(cmpquery);
 
@@ -78,10 +78,10 @@ namespace NXJC.UI.Web.Monitoring
             }
             cmpquery.JoinCriterion = new JoinCriterion
             {
-                JoinFieldName = "v_date",
+                DefaultJoinFieldName = "v_date",
                 JoinType = JoinType.FULL_JOIN
             };
-            cmpquery.TopNumber = TopNumber.top1;
+            cmpquery.TopNumber = 1;
             //cmpquery.OrderByClause = new OrderByClause("realtime_line_data.v_date", true);
             DataTable table = dataFactory.Query(cmpquery);
 
@@ -142,7 +142,7 @@ namespace NXJC.UI.Web.Monitoring
             }
             JoinCriterion joinCriterion = new JoinCriterion
             {
-                JoinFieldName = "v_date",
+                DefaultJoinFieldName = "v_date",
                 JoinType = JoinType.FULL_JOIN
             };
             ComplexQuery cmpquery = new ComplexQuery(needFields,joinCriterion);
