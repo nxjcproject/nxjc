@@ -49,7 +49,7 @@ namespace NXJC.UI.Web.Monitoring
             ComplexQuery cmpquery = new ComplexQuery();
             cmpquery.AddNeedField(dataSetInformation.TableName, dataSetInformation.FieldName, dataSetInformation.FieldName);
             cmpquery.TopNumber = 1;
-            cmpquery.OrderByClause = new OrderByClause("v_date", true);
+            cmpquery.AddOrderByClause("v_date", true);
             DataTable table = dataFactory.Query(cmpquery);
 
             foreach(DataRow item in table.Rows)
