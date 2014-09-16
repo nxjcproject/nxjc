@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Configuration\ApplicationSettingsFactory.cs" />
     <Compile Include="Configuration\ConnectionStringFactory.cs" />
-    <Compile Include="Configuration\ConnectionStringFactorytenp.cs" />
     <Compile Include="Configuration\DatabaseModel.cs" />
     <Compile Include="Configuration\DatabaseType.cs" />
     <Compile Include="Configuration\IApplicationSettings.cs" />
