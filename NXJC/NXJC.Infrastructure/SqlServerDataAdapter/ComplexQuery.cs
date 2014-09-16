@@ -100,6 +100,16 @@ namespace SqlServerDataAdapter
             };
             _joinCriterion = join;
         }
+        /// <summary>
+        /// 添加排序字段
+        /// </summary>
+        /// <param name="feildName"></param>
+        /// <param name="isDesc"></param>
+        public void AddOrderByClause(string feildName, bool isDesc)
+        {
+            OrderByClause order = new OrderByClause(feildName, isDesc);
+            _orderByClause.Add(order);
+        }
         public void AddJoinField(string tableName, string fieldName)
         {
             _joinCriterion.JoinFieldDictionary.Add(tableName, fieldName);
