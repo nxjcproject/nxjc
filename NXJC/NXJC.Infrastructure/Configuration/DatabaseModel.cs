@@ -18,17 +18,5 @@ namespace NXJC.Infrastructure.Configuration
         public string IPAddress { get; set; }
         public string UserID { get; set; }
         public string Password { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            if (((DatabaseModel)obj).DatabaseContrastID == this.DatabaseContrastID)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }

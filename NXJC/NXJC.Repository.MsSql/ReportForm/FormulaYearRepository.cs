@@ -21,7 +21,7 @@ namespace NXJC.Repository.ReportForm
 
         public FormulaYearRepository()
         {
-            connectionString = ConnectionStringFactorytenp.GetNXJCConnectionString();
+            connectionString = ConnectionStringFactory.NXJCConnectionString;
             dataFactory = new SqlServerDataFactory(connectionString);
         }
 

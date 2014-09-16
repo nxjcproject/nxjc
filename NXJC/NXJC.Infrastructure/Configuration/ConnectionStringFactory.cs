@@ -81,6 +81,29 @@ namespace NXJC.Infrastructure.Configuration
             }
         }
         /// <summary>
+        /// 通过生产线ID获得数据库名称
+        /// </summary>
+        /// <param name="productLineID"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string GetCatalogNameByProductLineID(int productLineID, DatabaseType type)
+        {
+            DatabaseModel model;
+
+            if (databaseBox.Where(d => d.ProductLineID == productLineID && d.Type == (int)type).Count() > 1)
+                throw new ApplicationException("指定数据库不唯一");
+
+            model = databaseBox.FirstOrDefault(d => d.ProductLineID == productLineID && d.Type == (int)type);
+            if (model != null)
+            {
+                return model.DatabaseName;
+            }
+            else
+            {
+                throw new ApplicationException("未找到指定数据库");
+            }
+        }
+        /// <summary>
         /// 通过DCS系统ID获得连接字符串
         /// </summary>
         /// <param name="dcsSystemID"></param>
